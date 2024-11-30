@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pick Up The Cake</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<style>
+    /* Scrollbar unica */
+    ::-webkit-scrollbar {
+        width: 4px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: #1a1a1a;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: #be3bff;
+        border-radius: 2px;
+    }
+    
+   
+
+    /* Altri stili... */
+    body{
+        background-color: rgba(0, 0, 0, 0.987);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        background-size: 50%;
+    }
+    .nav-container {
+        position: fixed;
+        top: 0;
+        right: 0;
+        padding: 1rem;
+        z-index: 1000;
+        display: flex;
+        justify-content: flex-end;
+        width: auto;
+    }
+    .nav-item {
+        color: white;
+        text-decoration: none;
+        margin-left: 2rem;
+        font-size: 1rem;
+        transition: color 0.3s ease;
+    }
+    .nav-item:hover {
+        color: #b400fb;
+    }
+    .artwork-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 120px;
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-left: 1rem;
+        
+    }
+    .artwork-container img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+    .images-container {
+        display: flex;
+        justify-content: center;
+        gap: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin-top: 50px;
+    }
+    
+    .image-box {
+        position: relative;
+        border: solid 1px #cccccc;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .image-box img {
+        width: 350px;
+        height: auto;
+        cursor: pointer;
+        display: block;
+    }
+
+    /* Bottom Player Styles */
+    .bottom-player {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100vw;
+        height: 60px;
+        background: rgb(0, 0, 0);
+        z-index: 1000;
+        border: 1px solid #b400fb;
+        border-bottom: none;
+        box-sizing: border-box;
+    }
+
+    .bottom-player .custom-player {
+        position: relative;
+        width: 100%;
+        height: 60px;
+    }
+
+    .bottom-player .controls {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        font-size: 0;
+        white-space: nowrap;
+    }
+
+    .control-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        background: white;
+        cursor: pointer;
+        margin: 0;
+        border-right: 1px solid #eee;
+    }
+
+    .control-container:last-child {
+        border-right: none;
+    }
+
+    .bottom-player .control-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        background: white;
+        cursor: pointer;
+        margin: 0;
+    }
+
+    .bottom-player .control-button i {
+        color: #080808;
+        font-size: 18px;
+    }
+
+    .bottom-player .control-button:hover {
+        background: #f0f0f0;
+    }
+
+    .bottom-player .control-button i:hover {
+        color: #b400fb;
+    }
+
+    .bottom-player .track-info {
+        position: absolute;
+        left: 200px;
+        top: 50%;
+        transform: translateY(-50%);
+        padding-left: 20px;
+    }
+
+    .bottom-player .song-info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .bottom-player .title-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .bottom-player .song-title {
+        font-size: 14px;
+        color: white;
+        font-weight: bold;
+    }
+
+    .bottom-player .artist-name {
+        font-size: 12px;
+        color: #999;
+        margin-left: 8px;
+    }
+
+    .bottom-player .time-row {
+        font-size: 11px;
+        color: #999;
+        margin-top: 2px;
+    }
+
+    .bottom-player .time-row span {
+        margin: 0 2px;
+    }
+
+    .bottom-player .progress-container {
+        position: absolute;
+        bottom: 2px;
+        left: 200px;
+        width: calc(100% - 220px);
+        height: 2px;
+        background: #333;
+        cursor: pointer;
+    }
+
+    .bottom-player .progress-bar {
+        width: 100%;
+        height: 100%;
+        background: #333;
+        position: relative;
+    }
+
+    .bottom-player .progress {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 0;
+        height: 100%;
+        background: #b400fb;
+        transition: width 0.1s linear;
+    }
+
+    .bottom-player .volume-container {
+        position: absolute;
+        right: 120px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .bottom-player .volume-container i {
+        color: white;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .bottom-player .volume-container input[type="range"] {
+        width: 100px;
+        height: 4px;
+        -webkit-appearance: none;
+        background: #333;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+
+    .bottom-player .volume-container input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 12px;
+        height: 12px;
+        background: #b400fb;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .bottom-player .volume-container input[type="range"]::-moz-range-thumb {
+        width: 12px;
+        height: 12px;
+        background: #b400fb;
+        border-radius: 50%;
+        cursor: pointer;
+        border: none;
+    }
+
+    .interactive-section {
+        min-height: 100vh;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.987);
+        position: relative;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        margin-top: 100vh;
+    }
+    .interactive-section.visible {
+        opacity: 1;
+    }
+    .instructions {
+        position: absolute;
+        bottom: 65px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #000;
+        font-family: ABCDiatype-Medium, sans-serif;
+        text-align: center;
+        padding: 10px;
+        z-index: 1000;
+    }
+    #scene-container {
+        width: 100%;
+        height: 100vh;
+    }
+
+    /* Media Queries */
+    @media screen and (max-width: 1200px) {
+        .images-container {
+            justify-content: center;
+            
+            margin-top: 0px;
+        }
+        
+        .image-box img {
+            width: 300px;
+        }
+    }
+
+    @media screen and (max-width: 780px) {
+        .nav-container {
+           padding: 0.5rem;
+                gap: 1rem;
+        }
+        
+        .artwork-container {
+            width: 80px;
+        }
+        
+        .image-box img {
+            width: 250px;
+        }
+
+        /* Nascondi volume su mobile */
+        .bottom-player .volume-container {
+                display: none;
+            }
+
+            /* Aggiusta la progress bar senza il volume */
+            .bottom-player .progress-container {
+                width: calc(100% - 120px);
+            }
+
+        .instructions {
+            bottom: 70px;
+            padding: 0 20px;
+            font-size: 14px;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .nav-container {
+            padding: 0.5rem;
+            gap: 1rem;
+        }
+        
+        .artwork-container {
+            width: 60px;
+            margin-left: 0.5rem;
+        }
+        
+        .image-box img {
+            width: 200px;
+        }
+
+        #scene-container {
+            height: 35vh;
+        }
+
+
+        
+        .instructions {
+            font-size: 12px;
+            text-align: center;
+            padding: 0 10px;
+        }
+    }
+
+    @media screen and (max-width: 400px) {
+   
+
+        .artwork-container {
+            width: 50px;
+            margin-left: 0.5rem;
+        }
+
+
+    }
+
+        @media screen and (max-height: 600px) {
+        .images-container {
+            margin-top: 80px;
+        }
+        
+        .instructions {
+            bottom: 100px;
+        }
+    }
+
+    /* Orientamento landscape su mobile */
+    @media screen and (max-height: 450px) and (orientation: landscape) {
+       
+        
+        
+        
+        .instructions {
+            bottom: 70px;
+            font-size: 11px;
+        }
+    }
+</style>
+<body>
+    <div class="nav-container">
+        <a href="about.html" class="nav-item">About</a>
+        <a href="contact.html" class="nav-item">Contact</a>
+    </div>
+    <div class="artwork-container">
+        <a href="http://127.0.0.1:5500/index.html">
+            <img src="artworw-purp.png" alt="Artwork Purple">
+        </a>
+    </div>
+    <div class="images-container">
+        <div class="image-box">
+            <a href="album.html">
+                <img src="ARWORK/Artworkdef.jpg" alt="Artwork Default">
+            </a>
+        </div>
+        <div class="image-box">
+            <img src="ARWORK/MST_TOTAL.png" alt="MST Total">
+        </div>
+    </div>
+
+    <div class="bottom-player">
+        <div class="custom-player">
+            <div class="controls">
+                <div class="control-container">
+                    <div class="control-button" onclick="previousSong('bottom')">
+                        <i class="fas fa-step-backward"></i>
+                    </div>
+                </div>
+                <div class="control-container">
+                    <div class="control-button" onclick="togglePlay('bottom')">
+                        <i class="fas fa-play" id="bottom-play-pause"></i>
+                    </div>
+                </div>
+                <div class="control-container">
+                    <div class="control-button" onclick="nextSong('bottom')">
+                        <i class="fas fa-step-forward"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="track-info">
+                <div class="song-info">
+                    <div class="title-row">
+                        <span class="song-title" id="bottom-song-title">Select a song</span>
+                        <span class="artist-name">Jaz Jizz Trio</span>
+                    </div>
+                    <div class="time-row">
+                        <span id="bottom-current-time">0:00</span>
+                        <span>/</span>
+                        <span id="bottom-duration">0:00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="bottom-progress-bar" onclick="seek(event, 'bottom')">
+                    <div class="progress" id="bottom-progress"></div>
+                </div>
+            </div>
+            <div class="volume-container">
+                <i class="fas fa-volume-up" onclick="toggleMute('bottom')"></i>
+                <input type="range" id="bottom-volume" min="0" max="1" step="0.1" value="1" 
+                       oninput="setVolume('bottom', this.value)">
+            </div>
+        </div>
+    </div>
+
+    <audio id="bottomAudio" onended="songEnded('bottom')" ontimeupdate="updateProgress('bottom')"></audio>
+
+    <div class="interactive-section">
+        <div id="scene-container"></div>
+        <div class="instructions desktop-instructions">Click and drag to interact. Press 'S' to enter sculpt mode, then click and drag to sculpt. Each interaction triggers different sounds.</div>
+        <div class="instructions mobile-instructions" style="display: none;">One finger to sculpt, two fingers to rotate</div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tone@14.7.77/build/Tone.min.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+
+    <script>
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        let players = {
+            bottom: {
+                currentSong: 0,
+                playlist: shuffleArray([
+                    {src: 'ALBUM/Jaz Jizz Trio_Master/1_FAI_Master.wav', title: 'FAI'},
+                    {src: 'ALBUM/Jaz Jizz Trio_Master/2. Derek_Master.wav', title: 'Derek'},
+                    {src: 'ALBUM/Jaz Jizz Trio_Master/3. Le solite beghe. w:Marcello Rotondella_master.wav', title: 'Le solite beghe'},
+                    {src: 'ALBUM/Jaz Jizz Trio_Master/4. Mai Usato_Master.wav', title: 'Mai Usato'},
+                    {src: 'ALBUM/Jaz Jizz Trio_Master/5. Surgelati_Master.wav', title: 'Surgelati'},
+                    {src: 'ALBUM/Jaz Jizz Trio_Master/6. un Inverno_Master.wav', title: 'Un Inverno'},
+                    {src: 'ALBUM/Jaz Jizz Trio_Master/7. Valle Di Lanzo_Master.wav', title: 'Valle Di Lanzo'}
+                ]),
+                isPlaying: false,
+                audio: null,
+                previousVolume: 1
+            }
+        };
+
+        function resetPlayer(type) {
+            const audio = document.getElementById(type + 'Audio');
+            if (players[type].playlist.length > 0) {
+                audio.src = players[type].playlist[0].src;
+                document.getElementById(type + '-song-title').textContent = players[type].playlist[0].title;
+            }
+        }
+
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            const minutes = Math.floor(seconds / 60);
+            seconds = Math.floor(seconds % 60);
+            return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+        }
+
+        function updateProgress(type) {
+            const audio = document.getElementById(type + 'Audio');
+            const progress = document.getElementById(type + '-progress');
+            const currentTime = document.getElementById(type + '-current-time');
+            const duration = document.getElementById(type + '-duration');
+            
+            if (audio.duration) {
+                const percent = (audio.currentTime / audio.duration) * 100;
+                progress.style.width = percent + '%';
+                
+                currentTime.textContent = formatTime(audio.currentTime);
+                duration.textContent = formatTime(audio.duration);
+            }
+        }
+
+        function seek(event, type) {
+            const audio = document.getElementById(type + 'Audio');
+            const progressBar = document.getElementById(type + '-progress-bar');
+            const rect = progressBar.getBoundingClientRect();
+            const percent = (event.clientX - rect.left) / rect.width;
+            audio.currentTime = percent * audio.duration;
+        }
+
+        function togglePlay(type) {
+            const audio = document.getElementById(type + 'Audio');
+            const playPauseBtn = document.getElementById(type + '-play-pause');
+            
+            if (audio.paused) {
+                if (!audio.src && players[type].playlist.length > 0) {
+                    const firstSong = players[type].playlist[0];
+                    audio.src = firstSong.src;
+                    document.getElementById(type + '-song-title').textContent = firstSong.title;
+                }
+                audio.play();
+                playPauseBtn.classList.remove('fa-play');
+                playPauseBtn.classList.add('fa-pause');
+            } else {
+                audio.pause();
+                playPauseBtn.classList.remove('fa-pause');
+                playPauseBtn.classList.add('fa-play');
+            }
+        }
+
+        function previousSong(type) {
+            players[type].currentSong--;
+            if (players[type].currentSong < 0) {
+                players[type].currentSong = players[type].playlist.length - 1;
+            }
+            const song = players[type].playlist[players[type].currentSong];
+            document.getElementById(type + '-song-title').textContent = song.title;
+            document.getElementById(type + 'Audio').src = song.src;
+            togglePlay(type);
+        }
+
+        function nextSong(type) {
+            players[type].currentSong++;
+            if (players[type].currentSong >= players[type].playlist.length) {
+                players[type].currentSong = 0;
+            }
+            const song = players[type].playlist[players[type].currentSong];
+            document.getElementById(type + '-song-title').textContent = song.title;
+            document.getElementById(type + 'Audio').src = song.src;
+            togglePlay(type);
+        }
+
+        function songEnded(type) {
+            nextSong(type);
+        }
+
+        function setVolume(type, volume) {
+            const audio = document.getElementById(type + 'Audio');
+            const volumeSlider = document.getElementById(type + '-volume');
+            audio.volume = volume;
+            volumeSlider.style.setProperty('--volume-percentage', (volume * 100) + '%');
+        }
+
+        function toggleMute(type) {
+            const audio = document.getElementById(type + 'Audio');
+            const volumeIcon = document.querySelector('.volume-container i');
+            const volumeSlider = document.getElementById(type + '-volume');
+            
+            if (audio.volume > 0) {
+                players[type].previousVolume = audio.volume;
+                audio.volume = 0;
+                volumeSlider.value = 0;
+                volumeIcon.className = 'fas fa-volume-mute';
+                volumeSlider.style.setProperty('--volume-percentage', '0%');
+            } else {
+                const newVolume = players[type].previousVolume || 1;
+                audio.volume = newVolume;
+                volumeSlider.value = newVolume;
+                volumeIcon.className = 'fas fa-volume-up';
+                volumeSlider.style.setProperty('--volume-percentage', (newVolume * 100) + '%');
+            }
+        }
+
+        // Initialize player on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('bottomAudio');
+            players.bottom.audio = audio;
+            resetPlayer('bottom');
+        });
+
+        // Aggiungiamo l'Intersection Observer per la sezione interattiva
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    initInteractive(); // Inizializza la scena 3D solo quando diventa visibile
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Osserva la sezione interattiva
+        observer.observe(document.querySelector('.interactive-section'));
+
+        let scene, camera, renderer, model;
+        let parts = [];
+        const synths = [];
+        let sculptMode = false;
+        let originalVertices = new Map();
+        let isInteractiveInitialized = false;
+        let previousMousePosition = { x: 0, y: 0 };
+        let rotationVelocity = { x: 0, y: 0 };
+        let isDragging = false;
+        let selectedPart = null;
+        const dampingFactor = 0.95;
+        const sculptStrength = 0.6; // Ridotto per un controllo più fine
+        const sculptRadius = 4; // Aumentato per coprire un'area maggiore
+        let lastSculptTime = 0;
+        const sculptCooldown = 16; // ~60fps
+
+        function sculptMesh(mesh, point) {
+            const currentTime = performance.now();
+            if (currentTime - lastSculptTime < sculptCooldown) return;
+            lastSculptTime = currentTime;
+
+            const positions = mesh.geometry.attributes.position;
+            const originalPositions = originalVertices.get(mesh);
+            
+            // Converti il punto di impatto in coordinate locali del mesh
+            const localPoint = point.clone().applyMatrix4(mesh.matrixWorld.invert());
+            
+            // Itera attraverso tutti i vertici
+            for (let i = 0; i < positions.array.length; i += 3) {
+                const vertex = new THREE.Vector3(
+                    positions.array[i],
+                    positions.array[i + 1],
+                    positions.array[i + 2]
+                );
+                
+                // Calcola la distanza dal punto di impatto
+                const distance = vertex.distanceTo(localPoint);
+                
+                // Funzione di falloff più morbida
+                if (distance < sculptRadius) {
+                    // Usa una funzione smoothstep per un falloff più naturale
+                    const falloff = 1 - (distance / sculptRadius);
+                    const smoothFalloff = falloff * falloff * (3 - 2 * falloff);
+                    const intensity = smoothFalloff * sculptStrength;
+                    
+                    // Direzione della deformazione (dal centro verso l'esterno)
+                    const direction = vertex.clone().sub(localPoint).normalize();
+                    
+                    // Applica la deformazione
+                    vertex.add(direction.multiplyScalar(intensity));
+                    
+                    positions.array[i] = vertex.x;
+                    positions.array[i + 1] = vertex.y;
+                    positions.array[i + 2] = vertex.z;
+                }
+            }
+            
+            // Aggiorna la geometria
+            positions.needsUpdate = true;
+            mesh.geometry.computeVertexNormals();
+        }
+
+        function initInteractive() {
+            if (isInteractiveInitialized) return;
+            isInteractiveInitialized = true;
+
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0xffffff);
+            document.getElementById('scene-container').appendChild(renderer.domElement);
+
+            // Illuminazione migliorata
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+            scene.add(ambientLight);
+
+            const frontLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            frontLight.position.set(0, 0, 100);
+            scene.add(frontLight);
+
+            const topLight = new THREE.DirectionalLight(0xb400fb, 0.5);
+            topLight.position.set(0, 100, 0);
+            scene.add(topLight);
+
+            const bottomLight = new THREE.DirectionalLight(0xb400fb, 0.3);
+            bottomLight.position.set(0, -100, 0);
+            scene.add(bottomLight);
+
+            camera.position.z = 95;
+
+            animate();
+
+            const loader = new THREE.GLTFLoader();
+            loader.load('3d/ImageToStl.com_nosfondo.glb', 
+                (gltf) => {
+                    model = gltf.scene;
+                    model.rotation.x = -Math.PI / 2;
+
+                    // Scala il modello in base alla dimensione dello schermo
+                    if (window.innerWidth <= 480) {
+                        model.scale.set(1.1, 0.09, 1.1);
+                        
+                        // Aggiusta le luci per mobile
+                        topLight.intensity = 0.6;    // Ridotta da 0.5
+                        bottomLight.intensity = 0.9; // Ridotta da 0.3
+                        frontLight.intensity = 0.1;    // Aumentata da 0.8
+                    }
+                    
+                    // Prepara una lista di tutti i mesh nel modello
+                    model.traverse((child) => {
+                        if (child.isMesh) {
+                            // Abilita il raycast su ogni mesh
+                            child.raycast = THREE.Mesh.prototype.raycast;
+                            
+                            // Salva le posizioni originali
+                            const positions = child.geometry.attributes.position.array;
+                            originalVertices.set(child, Float32Array.from(positions));
+                            
+                            child.geometry.attributes.position.usage = THREE.DynamicDrawUsage;
+                            
+                            // Materiale migliorato e trasparente per il raycast
+                            child.material = new THREE.MeshPhongMaterial({
+                                color: 0x000000,
+                                specular: 0xb400fb,
+                                shininess: 150,
+                                emissive: 0x330044,
+                                emissiveIntensity: 0.1,
+                                side: THREE.DoubleSide, // Rende il mesh visibile da entrambi i lati
+                                transparent: true,
+                                opacity: 1
+                            });
+
+                            // Aggiorna le normali e i buffer
+                            child.geometry.computeBoundingSphere();
+                            child.geometry.computeBoundingBox();
+                            child.geometry.computeVertexNormals();
+                            
+                            parts.push(child);
+                            
+                            const synth = new Tone.Synth({
+                                oscillator: { type: "sine" },
+                                envelope: {
+                                    attack: 0.1,
+                                    decay: 0.2,
+                                    sustain: 0.3,
+                                    release: 1
+                                }
+                            }).toDestination();
+                            synths.push(synth);
+                        }
+                    });
+
+                    scene.add(model);
+                    console.log('Modello caricato con successo');
+                },
+                (xhr) => {
+                    console.log((xhr.loaded / xhr.total * 100) + '% caricato');
+                },
+                (error) => {
+                    console.error('Errore nel caricamento del modello:', error);
+                }
+            );
+
+            const raycaster = new THREE.Raycaster();
+            raycaster.params.Line.threshold = 0.1; // Aumenta la precisione del raycast
+            const mouse = new THREE.Vector2();
+
+            window.addEventListener('keydown', (event) => {
+                if (event.key.toLowerCase() === 's') {
+                    sculptMode = !sculptMode;
+                    document.body.style.cursor = sculptMode ? 'crosshair' : 'default';
+                }
+            });
+
+            renderer.domElement.addEventListener('mousedown', onMouseDown);
+            renderer.domElement.addEventListener('mousemove', onMouseMove);
+            renderer.domElement.addEventListener('mouseup', onMouseUp);
+
+            // Touch events per mobile/tablet
+            let touchCount = 0;
+            
+            renderer.domElement.addEventListener('touchstart', (event) => {
+                touchCount = event.touches.length;
+                
+                if (touchCount === 1) {
+                    // Attiva modalità sculpt con un dito
+                    sculptMode = true;
+                    document.body.style.cursor = 'crosshair';
+                    
+                    // Aggiorna posizione mouse per sculpt
+                    const touch = event.touches[0];
+                    const rect = renderer.domElement.getBoundingClientRect();
+                    mouse.x = ((touch.clientX - rect.left) / rect.width) * 2 - 1;
+                    mouse.y = -((touch.clientY - rect.top) / rect.height) * 2 + 1;
+                } 
+                else if (touchCount === 2) {
+                    // Attiva modalità drag con due dita
+                    sculptMode = false;
+                    isDragging = true;
+                    document.body.style.cursor = 'grab';
+                    
+                    // Salva posizione iniziale per il drag
+                    const touch = event.touches[0];
+                    previousMousePosition = {
+                        x: touch.clientX,
+                        y: touch.clientY
+                    };
+                }
+            });
+
+            renderer.domElement.addEventListener('touchmove', (event) => {
+                event.preventDefault(); // Previene lo scroll della pagina
+                
+                if (touchCount === 1 && sculptMode) {
+                    // Sculpting con un dito
+                    const touch = event.touches[0];
+                    const rect = renderer.domElement.getBoundingClientRect();
+                    mouse.x = ((touch.clientX - rect.left) / rect.width) * 2 - 1;
+                    mouse.y = -((touch.clientY - rect.top) / rect.height) * 2 + 1;
+                    
+                    raycaster.setFromCamera(mouse, camera);
+                    const intersects = raycaster.intersectObjects(parts);
+                    
+                    if (intersects.length > 0) {
+                        sculptMesh(intersects[0].object, intersects[0].point);
+                    }
+                } 
+                else if (touchCount === 2 && isDragging) {
+                    // Rotazione con due dita
+                    const touch = event.touches[0];
+                    const movementX = touch.clientX - previousMousePosition.x;
+                    const movementY = touch.clientY - previousMousePosition.y;
+                    
+                    rotationVelocity.x += movementY * 0.005;
+                    rotationVelocity.y += movementX * 0.005;
+                    
+                    previousMousePosition = {
+                        x: touch.clientX,
+                        y: touch.clientY
+                    };
+                }
+            });
+
+            renderer.domElement.addEventListener('touchend', (event) => {
+                touchCount = event.touches.length;
+                
+                if (touchCount < 2) {
+                    isDragging = false;
+                }
+                if (touchCount === 0) {
+                    sculptMode = false;
+                    document.body.style.cursor = 'default';
+                }
+            });
+
+            function onMouseDown(event) {
+                mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+                mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+                previousMousePosition = { x: event.clientX, y: event.clientY };
+
+                raycaster.setFromCamera(mouse, camera);
+                const intersects = raycaster.intersectObjects(parts, true);
+
+                if (intersects.length > 0) {
+                    isDragging = true;
+                    selectedPart = intersects[0].object;
+                    rotationVelocity = { x: 0, y: 0 };
+                    
+                    if (sculptMode) {
+                        // Applica sculpting a tutte le parti intersecate
+                        intersects.forEach(intersect => {
+                            sculptMesh(intersect.object, intersect.point);
+                            const partIndex = parts.indexOf(intersect.object);
+                            if (partIndex >= 0) {
+                                const frequency = 220 + (Math.random() * 220);
+                                synths[partIndex].triggerAttackRelease(frequency, "16n");
+                            }
+                        });
+                    } else {
+                        const partIndex = parts.indexOf(selectedPart);
+                        if (partIndex >= 0) {
+                            synths[partIndex].triggerAttackRelease("C4", "8n");
+                        }
+                    }
+                }
+            }
+
+            function onMouseMove(event) {
+                if (!isDragging) return;
+
+                const currentMousePosition = { x: event.clientX, y: event.clientY };
+                const deltaMove = {
+                    x: (currentMousePosition.x - previousMousePosition.x) / window.innerWidth,
+                    y: (currentMousePosition.y - previousMousePosition.y) / window.innerHeight
+                };
+
+                if (sculptMode) {
+                    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+                    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+                    raycaster.setFromCamera(mouse, camera);
+                    const intersects = raycaster.intersectObjects(parts, true);
+
+                    if (intersects.length > 0) {
+                        // Applica sculpting a tutte le parti intersecate
+                        intersects.forEach(intersect => {
+                            sculptMesh(intersect.object, intersect.point);
+                            const partIndex = parts.indexOf(intersect.object);
+                            if (partIndex >= 0) {
+                                const frequency = 220 + (intersect.distance * 100);
+                                synths[partIndex].frequency.value = frequency;
+                            }
+                        });
+                    }
+                } else {
+                    rotationVelocity.x = -deltaMove.y * 2;
+                    rotationVelocity.y = -deltaMove.x * 2;
+                    
+                    selectedPart.rotation.x += rotationVelocity.x;
+                    selectedPart.rotation.y += rotationVelocity.y;
+
+                    const partIndex = parts.indexOf(selectedPart);
+                    if (partIndex >= 0) {
+                        const frequency = 220 + (Math.abs(deltaMove.y) * 1000);
+                        synths[partIndex].frequency.value = frequency;
+                    }
+                }
+
+                previousMousePosition = currentMousePosition;
+            }
+
+            function onMouseUp() {
+                isDragging = false;
+                selectedPart = null;
+            }
+
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            if (model) {
+                model.rotation.y += 0.001;
+            }
+
+            if (!isDragging && selectedPart) {
+                selectedPart.rotation.x += rotationVelocity.x;
+                selectedPart.rotation.y += rotationVelocity.y;
+                rotationVelocity.x *= dampingFactor;
+                rotationVelocity.y *= dampingFactor;
+            }
+
+            renderer.render(scene, camera);
+        }
+
+        // Inizializza Tone.js quando l'utente interagisce
+        document.addEventListener('click', async () => {
+            await Tone.start();
+        });
+
+        // Mostra le istruzioni appropriate in base al dispositivo
+        if (window.innerWidth <= 480) {
+            document.querySelector('.desktop-instructions').style.display = 'none';
+            document.querySelector('.mobile-instructions').style.display = 'block';
+        }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let timer = null;
+            window.addEventListener('scroll', function() {
+                document.body.classList.add('is-scrolling');
+                
+                if (timer !== null) {
+                    clearTimeout(timer);
+                }
+                
+                timer = setTimeout(function() {
+                    document.body.classList.remove('is-scrolling');
+                }, 100);
+            }, false);
+        });
+    </script>
+
+    <script>
+        let isScrolling;
+        
+        window.addEventListener('scroll', function() {
+            document.body.classList.add('scrolling');
+            
+            // Clear our timeout throughout the scroll
+            window.clearTimeout(isScrolling);
+            
+            // Set a timeout to remove the class after scrolling ends
+            isScrolling = setTimeout(function() {
+                document.body.classList.remove('scrolling');
+            }, 66); // Tempo ridotto per una risposta più immediata
+        });
+    </script>
+
+    <script>
+        // Gestione colore scrollbar
+        let scrolling = false;
+        let scrollTimeout;
+
+        window.addEventListener('wheel', function() {
+            if (!scrolling) {
+                document.documentElement.classList.add('scrolling');
+                scrolling = true;
+            }
+            
+            clearTimeout(scrollTimeout);
+            
+            scrollTimeout = setTimeout(function() {
+                document.documentElement.classList.remove('scrolling');
+                scrolling = false;
+            }, 150);
+        }, { passive: true });
+
+        // Touch events per dispositivi mobili
+        window.addEventListener('touchmove', function() {
+            if (!scrolling) {
+                document.documentElement.classList.add('scrolling');
+                scrolling = true;
+            }
+            
+            clearTimeout(scrollTimeout);
+            
+            scrollTimeout = setTimeout(function() {
+                document.documentElement.classList.remove('scrolling');
+                scrolling = false;
+            }, 150);
+        }, { passive: true });
+    </script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pick Up The Cake</title>
+</head>
+<style>
+    body{
+        background-color: rgba(255, 255, 255, 0.987);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        margin: 0;
+    }
+    .nav-container {
+        position: fixed;
+        top: 0;
+        right: 0;
+        padding: 1rem;
+        z-index: 1000;
+        display: flex;
+        justify-content: flex-end;
+        width: auto;
+    }
+    .nav-item {
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        margin-left: 2rem;
+        font-size: 1rem;
+        transition: color 0.3s ease;
+    }
+    .nav-item:hover {
+        color: #b400fb;
+    }
+    .artwork-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 120px;
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-left: 1rem;
+    }
+    .artwork-container img {
+        max-width: 100%;
+        height: auto;
+        border: none;
+    }
+    .content {
+        display: flex;
+        justify-content: space-between;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        gap: 40px;
+        width: 100%;
+    }
+    .contact-section {
+        margin: 0;
+        position: relative;
+    }
+    .contact-section:first-child::after {
+        content: '';
+        position: absolute;
+        right: -90px;
+        top: 0;
+        height: 100%;
+        width: 1px;
+        background-color: #000000;
+    }
+    .contact-section h2 {
+        color: #000000;
+        margin-bottom: 20px;
+        font-size: 1rem;
+        font-family: ABCDiatype-Medium, sans-serif;
+    }
+    .contact-section a {
+        color: #000000;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 10px;
+        font-size: 1rem;
+        font-family: ABCDiatype-Medium, sans-serif;
+    }
+    .contact-section a:hover {
+        color: #b400fb;
+    }
+
+    @media screen and (max-width: 1200px) {
+        .content {
+            max-width: 700px;
+            padding: 0 30px;
+        }
+    }
+
+    @media screen and (max-width: 780px) {
+        .nav-container {
+            padding: 0.5rem;
+            gap: 1rem;
+        }
+
+        .artwork-container {
+            width: 80px;
+        }
+
+        .content {
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 100px;
+            padding: 0 40px;
+        }
+
+        .contact-section:first-child::after {
+            display: none;
+        }
+
+        .contact-section {
+            text-align: center;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .nav-container {
+            padding: 0.5rem;
+            gap: 1rem;
+        }
+        
+        .artwork-container {
+            width: 60px;
+            margin-left: 0.5rem;
+        }
+
+        .content {
+            margin-top: 80px;
+            padding: 0 30px;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .artwork-container {
+            position: fixed;
+            top: 0px;
+            left: 0;
+            padding: 1rem;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            height: 1.5rem;
+            margin-left: 0;
+            width: auto;
+        }
+
+        .artwork-container img {
+            width: 50px;
+            height: auto;
+        }
+
+        .content {
+            margin-top: 80px;
+            padding: 0 20px;
+            gap: 25px;
+        }
+
+        .contact-section {
+            font-size: 0.9rem;
+        }
+
+        .contact-section h2 {
+            margin-bottom: 15px;
+        }
+    }
+
+    @media screen and (max-width: 400px) {
+        .nav-container {
+            padding: 0.3rem;
+            position: fixed;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 1000;
+        }
+        
+        .nav-item {
+            margin-left: 0.7rem;
+            font-size: 0.8rem;
+        }
+
+        .content {
+            margin-top: 60px;
+            padding: 0 15px;
+            gap: 20px;
+        }
+
+        .contact-section {
+            font-size: 0.8rem;
+        }
+
+        .contact-section h2 {
+            margin-bottom: 10px;
+        }
+
+        .contact-section a {
+            margin-bottom: 8px;
+        }
+    }
+
+    @media screen and (max-height: 600px) {
+        .content {
+            margin-top: 70px;
+            gap: 15px;
+            padding: 0 25px;
+        }
+    }
+
+    @media screen and (max-height: 450px) and (orientation: landscape) {
+        .content {
+            margin-top: 60px;
+            flex-direction: row;
+            justify-content: space-around;
+            gap: 30px;
+            padding: 0 30px;
+        }
+
+        .contact-section {
+            font-size: 0.85rem;
+            flex: 1;
+            max-width: 200px;
+        }
+
+        .contact-section h2 {
+            margin-bottom: 12px;
+        }
+    }
+</style>
+<body>
+    <div class="nav-container">
+        <a href="about.html" class="nav-item">About</a>
+        <a href="#" class="nav-item">Contact</a>
+    </div>
+    <div class="artwork-container">
+        <a href="index.html">
+            <img src="artworw-purp.png" alt="Artwork Purple">
+        </a>
+    </div>
+    <div class="content">
+        <div class="contact-section">
+            <h2>CONTACT:</h2>
+            <a href="mailto:pickupthecake@gmail.com">pickupthecake@gmail.com</a>
+        </div>
+
+        <div class="contact-section">
+            <h2>LISTEN PUTC:</h2>
+            <a href="https://soundcloud.com/pickupthecake">soundcloud</a>
+            <a href="https://pickupthecake.bandcamp.com/">bandcamp</a>
+        </div>
+
+        <div class="contact-section">
+            <h2>FOLLOW PUTC:</h2>
+            <a href="https://www.instagram.com/pickupthecake_/">instagram</a>
+        </div>
+    </div>
+</body>
+</html>
