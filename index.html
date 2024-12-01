@@ -33,6 +33,7 @@
     }
     .nav-container {
         position: fixed;
+        background: rgba(0, 0, 0, 0.95);
         top: 0;
         right: 0;
         padding: 1rem;
@@ -44,6 +45,8 @@
     .nav-item {
         color: white;
         text-decoration: none;
+        font-family: ABCDiatype-Medium, sans-serif;
+        font-weight: bold;
         margin-left: 2rem;
         font-size: 1rem;
         transition: color 0.3s ease;
@@ -52,12 +55,12 @@
         color: #b400fb;
     }
     .artwork-container {
-        display: flex;
+        position: fixed;
         justify-content: center;
         align-items: center;
         width: 120px;
         height: auto;
-        position: absolute;
+       
         top: 0;
         left: 0;
         margin-left: 1rem;
@@ -86,7 +89,7 @@
         padding: 0;
     }
     
-    .image-box img {
+    .image-box video {
         width: 350px;
         height: auto;
         cursor: pointer;
@@ -423,7 +426,7 @@
     <div class="images-container">
         <div class="image-box">
             <a href="album.html">
-                <img src="ARWORK/Artworkdef.jpg" alt="Artwork Default">
+                <video src="ARWORK/sofacovermove.mp4" alt="Artwork Default" autoplay loop muted>
             </a>
         </div>
     </div>

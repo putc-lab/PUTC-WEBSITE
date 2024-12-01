@@ -29,9 +29,10 @@
         }
 
         .nav-container {
-            position: fixed;
+            display: flex;
             top: 0;
             right: 0;
+            font-family: ABCDiatype-Medium, sans-serif;
             padding: 1rem;
             z-index: 1000;
             display: flex;
@@ -42,6 +43,8 @@
         .nav-item {
             color: rgb(0, 0, 0);
             text-decoration: none;
+            font-family: ABCDiatype-Medium, sans-serif;
+            font-weight: bold;
             margin-left: 2rem;
             font-size: 1rem;
             transition: color 0.3s ease;
@@ -351,8 +354,11 @@
 
         .artwork-credit {
             text-align: center;
-            color: #868686;
-            font-size: 0.8rem;
+            color: #000000;
+            font-family: Abcdiatype-Medium, sans-serif;
+            font-style: italic;
+            
+            font-size: 0.9rem;
             margin-top: 10px;
         }
 
@@ -371,6 +377,7 @@
 
         @media screen and (max-width: 780px) {
             .nav-container {
+               
                 padding: 0.5rem;
                 gap: 1rem;
             }
@@ -451,7 +458,7 @@
 
     <div class="album-content">
         <div class="album-artwork">
-            <img src="ARWORK/Artworkdef.jpg" alt="Jaz Jizz Trio Album">
+            <img src="ARWORK/sofacoveer2.png" alt="Jaz Jizz Trio Album">
             <div class="artwork-credit">Artwork by Silvia Basano</div>
         </div>
         <div class="album-info">
