@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" sizes="32x32" href="artworw-purp.png">
     <title>Pick Up The Cake</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -36,6 +37,7 @@
         background: rgba(0, 0, 0, 0.95);
         top: 0;
         right: 0;
+        gap: 4rem;
         padding: 1rem;
         z-index: 1000;
         display: flex;
@@ -419,7 +421,7 @@
         <a href="contact.html" class="nav-item">CONTACT</a>
     </div>
     <div class="artwork-container">
-        <a href="http://pickupthecake.xyz">
+        <a href="index.html">
             <img src="artworw-white.png" alt="Artwork Purple">
         </a>
     </div>
@@ -655,7 +657,11 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    initInteractive(); // Inizializza la scena 3D solo quando diventa visibile
+                    // Rimuovi l'observer dopo la prima inizializzazione
+                    if (!isInteractiveInitialized) {
+                        initInteractive();
+                        observer.disconnect();
+                    }
                 }
             });
         }, { threshold: 0.1 });

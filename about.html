@@ -51,6 +51,7 @@
             display: flex;
             top: 0;
             right: 0;
+            gap: 4rem;
             padding: 1rem;
             z-index: 1000;
             display: flex;
@@ -114,6 +115,13 @@
             height: 100% !important;
         }
 
+        @media screen and (max-width: 768px) {
+        .nav-container {
+            padding: 0.5rem;
+            gap: 1rem;
+        }
+    }
+
         @media screen and (max-width: 480px) {
             #model-container {
                 height: 200px;
@@ -163,12 +171,13 @@
             }
 
             .nav-container {
-                padding: 0.3rem;
+                gap: 1rem;
+                padding: 0.5rem;
             }
 
             .nav-item {
-                margin-left: 0.7rem;
-                font-size: 0.8rem;
+                margin-left: 2rem;
+                
             }
         }
 
@@ -187,12 +196,12 @@
 <body>
     
     <div class="nav-container">
-        <a href="index.html" class="nav-item">ABOUT</a>
+        <a href="about.html" class="nav-item">ABOUT</a>
         <a href="contact.html" class="nav-item">CONTACT</a>
     </div>
 
     <div class="artwork-container">
-        <a href="http://pickupthecake.xyz">
+        <a href="index.html">
             <img src="artworw-white.png" alt="Artwork Purple">
         </a>
     </div>
