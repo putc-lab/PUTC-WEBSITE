@@ -65,7 +65,7 @@
        
         top: 0;
         left: 0;
-        margin-left: 1rem;
+        margin-left: 0.5rem;
         
     }
     .artwork-container img {
@@ -508,6 +508,13 @@
     <script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
 
     <script>
+
+document.addEventListener('DOMContentLoaded', function() {
+        const video = document.getElementById('myVideo');
+        video.play().catch(error => {
+            console.log('Autoplay non riuscito:', error);
+        });
+    });
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
