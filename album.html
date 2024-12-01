@@ -380,6 +380,12 @@
             max-height: 80%;
         }
 
+        /* Aggiungendo l'accelerazione hardware per migliorare le prestazioni su dispositivi mobili più vecchi */
+        .image-box {
+            will-change: transform;
+            transform: translateZ(0);
+        }
+
         /* Media Queries */
         @media screen and (max-width: 1200px) {
             .album-content {
