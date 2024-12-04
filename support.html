@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pick Up The Cake - About</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Scrollbar unica */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #be3bff;
+            border-radius: 2px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            font-family: abcdiatype-medium, sans-serif;
+            
+        }
+
+        .artwork-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 120px;
+            height: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin-left: 0.5rem;
+        }
+
+        .artwork-container img {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+
+        .nav-container {
+            display: flex;
+            top: 0;
+            right: 0;
+            gap: 4rem;
+            padding: 1rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: flex-end;
+            width: auto;
+        }
+
+        .nav-item {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .nav-item:hover {
+            color: #b400fb;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 100px auto 220px auto;
+            text-align: center;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .about-content h1 {
+            color: #b400fb;
+            font-family: abcdiatype-medium, sans-serif;
+            font-style: italic;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .about-section {
+            margin-bottom: 40px;
+        }
+
+        .about-section h2 {
+            color: #b400fb;
+            margin-bottom: 20px;
+        }
+
+        #model-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            bottom: 100px;
+            background-color: black;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        #model-container canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        .image-box {
+            will-change: transform;
+            transform: translateZ(0);
+        }
+
+        @media screen and (max-width: 768px) {
+        .nav-container {
+            padding: 0.5rem;
+            gap: 1rem;
+        }
+    }
+
+        @media screen and (max-width: 480px) {
+            #model-container {
+                height: 200px;
+                margin-bottom: 20px;
+                transform: scale(0.8);
+            }
+
+            .about-content {
+                margin-top: 60px;
+                padding: 0 15px;
+                font-size: 0.7rem;
+            }
+            .artwork-container {
+                top: 0px;
+                left: 0;
+                z-index: 1000;
+                display: flex;
+                align-items: center;
+                margin-left: 0.5rem;
+                width: auto;
+            }
+
+            .artwork-container img {
+                width: 50px;
+                height: auto;
+            }
+        }
+
+
+        @media screen and (max-width: 400px) {
+            #model-container {
+                height: 180px;
+                margin-bottom: 20px;
+            }
+
+            #model-container canvas {
+                transform: scale(0.8);
+            }
+
+            .about-content {
+                margin-top: 18vh;
+                padding: 0 15px;
+                font-size: 0.7rem;
+            }
+
+            .nav-container {
+                gap: 1rem;
+                padding: 0.5rem;
+            }
+
+            .nav-item {
+                margin-left: 2rem;
+                
+            }
+        }
+
+        @media screen and (max-width: 780px) and (orientation: landscape) {
+            #model-container {
+                height: 180px;
+            }
+
+            #model-container canvas {
+                transform: scale(0.6);
+                transform-origin: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="nav-container">
+        <a href="about.html" class="nav-item">&#x21B3; ABOUT</a>
+        <a href="contact.html" class="nav-item">&#x21B3; CONTACT</a>
+        <a href="support.html" class="nav-item">&#x21B3; SUPPORT US</a>
+    </div>
+
+    <div class="artwork-container">
+        <a href="index.html">
+            <img src="artworw-purp.png" alt="Artwork Purple">
+        </a>
+    </div>
+
+    <div class="about-content">
+        <div class="about-section">
+            <h2>Why?</h2>
+            <p> Pick Up The Cake It is a self-supporting label, it does not make money, it tries to finance as many projects as possible,
+                 even going so far as to physically print, records, vinyl, and cassettes. Thanks also to merch purchases or downloads of PUTC productions that we could accomplish more things</p>
+        </div>
+
+        
+
+        
+   
