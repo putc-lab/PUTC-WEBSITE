@@ -33,7 +33,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 120px;
+            width: 100px;
             height: auto;
             position: absolute;
             top: 0;
@@ -127,7 +127,7 @@
         @media screen and (max-width: 768px) {
             .hamburger-menu {
                 display: block;
-                position: fixed;
+                position: absolute;
                 top: 0;
                 right: 0;
                 z-index: 1001;
@@ -159,8 +159,8 @@
                 right: -100%;
                 width: 250px;
                 height: 100vh;
-                background: rgb(125, 65, 255);
-                                padding-top: 60px;
+                background: #b400fb;
+                 padding-top: 60px;
                 transition: 0.3s;
                 flex-direction: column;
                 gap: 1rem;
@@ -188,26 +188,28 @@
         @media screen and (max-width: 780px) {
             .nav-container {
                 width: 100%;
-                padding: 0.5rem;
-                gap: 1rem;
+                padding: 0;
                 position: fixed;
                 top: 0;
                 left: 0;
                 right: 0;
-                background: rgb(125, 65, 255);
-                display: none; /* Nascondi di default */
+                background: #b400fb;
+                display: none;
                 flex-direction: column;
-                justify-content: flex-start;
+                justify-content: center;
                 align-items: center;
-                padding-top: 60px; /* Spazio per il menu hamburger */
+                height: 100vh;
+                gap: 2rem;
             }
             .nav-container.active {
-                display: flex; /* Mostra quando attivo */
+                display: flex;
             }
             .nav-container .nav-item {
                 color: white;
                 font-size: 2rem;
-                margin-top: 5rem; /* Assicurati che i link siano più in basso */
+                text-align: center;
+                width: 100%;
+                margin: 2rem;
             }
         }
 
@@ -234,7 +236,7 @@
             }
 
             .artwork-container img {
-                width: 50px;
+                width: 70px;
                 height: auto;
             }
         }
