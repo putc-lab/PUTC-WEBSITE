@@ -57,16 +57,14 @@
         color: #b400fb;
     }
     .artwork-container {
-        
-        justify-content: center;
-        align-items: center;
-        width: 120px;
-        height: auto;
-      display: flex; 
+        position: absolute;
         top: 0;
         left: 0;
+        z-index: 1002;
+        display: flex;
+        align-items: center;
         margin-left: 0.5rem;
-        
+        width: 100px;
     }
     .artwork-container img {
         max-width: 100%;
@@ -320,7 +318,7 @@
     @media screen and (max-width: 768px) {
         .hamburger-menu {
             display: block;
-            position: fixed;
+            position: absolute;
             top: 0;
             right: 0;
             z-index: 1001;
@@ -352,8 +350,7 @@
             right: -100%;
             width: 250px;
             height: 100vh;
-            background: rgba(125, 65, 255, 0.95);
-            padding-top: 60px;
+            background: #b400fb;
             transition: 0.3s;
             flex-direction: column;
             gap: 1rem;
@@ -400,29 +397,31 @@
     @media screen and (max-width: 780px) {
         .nav-container {
             width: 100%;
-           padding: 0.5rem;
-                gap: 1rem;
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                background: rgb(101, 47, 228);
-                display: none; /* Nascondi di default */
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-                padding-top: 60px; /* Spazio per il menu hamburger */
+            padding: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #b400fb;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            z-index: 999;
         }
         .nav-container.active {
-            display: flex; /* Mostra quando attivo */
+            display: flex;
         }
         .nav-container .nav-item {
+            color: white;
             font-size: 2rem;
-            margin-top: 4rem; /* Assicurati che i link siano più in basso */
+            text-align: center;
+            width: 100%;
         }
         .artwork-container {
-            z-index: 100;
-            width: 80px;
+            z-index: 1002;
+            width: 70px;
         }
         
         .image-box video {
@@ -448,12 +447,12 @@
 
     @media screen and (max-width: 768px) {
         .nav-container {
-            padding: 0.5rem;
+            padding: 0;
             gap: 1rem;
         }
         
         .artwork-container {
-            width: 60px;
+            width: 70px;
             margin-left: 0.5rem;
         }
         
@@ -475,7 +474,7 @@
    
 
         .artwork-container {
-            width: 50px;
+            width: 70px;
             
         }
 
@@ -507,19 +506,19 @@
     @media screen and (max-width: 780px) {
         .nav-container {
             width: 100%;
-            padding: 0.5rem;
+            padding: 0;
             gap: 1rem;
             align-items: center;
             text-align: center;
         }
         .nav-container .nav-item {
             font-size: 2rem;
-            margin-top: 5rem; /* Assicurati che i link siano più in basso */
+           
             text-align: center;
 
         }
         .artwork-container {
-            width: 50px;
+            width: 70px;
         }
     }
 </style>
