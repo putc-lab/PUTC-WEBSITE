@@ -47,8 +47,10 @@
             cursor: pointer;
         }
 
+        /* Nav container per desktop */
         .nav-container {
-            display: flex;
+            position: fixed;
+            background: rgba(255, 255, 255, 0.95);
             top: 0;
             right: 0;
             gap: 4rem;
@@ -123,11 +125,91 @@
         }
 
         @media screen and (max-width: 768px) {
-        .nav-container {
-            padding: 0.5rem;
-            gap: 1rem;
+            .hamburger-menu {
+                display: block;
+                position: fixed;
+                top: 0;
+                right: 0;
+                z-index: 1001;
+                cursor: pointer;
+                background: none;
+                padding: 1rem;
+                width: 60px;
+            }
+            
+            .bars-container {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                width: 25px;
+                margin: 0 auto;
+            }
+            
+            .bar {
+                width: 25px;
+                height: 3px;
+                background-color: rgb(0, 0, 0);
+                transition: 0.3s;
+            }
+            
+            .nav-container {
+                display: none;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 250px;
+                height: 100vh;
+                background: rgb(125, 65, 255);
+                                padding-top: 60px;
+                transition: 0.3s;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-container.active {
+                right: 0;
+                display: flex;
+            }
+
+            /* Hamburger animation */
+            .hamburger-menu.active .bar:first-child {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .hamburger-menu.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger-menu.active .bar:last-child {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
         }
-    }
+
+        @media screen and (max-width: 780px) {
+            .nav-container {
+                width: 100%;
+                padding: 0.5rem;
+                gap: 1rem;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background: rgb(125, 65, 255);
+                display: none; /* Nascondi di default */
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 60px; /* Spazio per il menu hamburger */
+            }
+            .nav-container.active {
+                display: flex; /* Mostra quando attivo */
+            }
+            .nav-container .nav-item {
+                color: white;
+                font-size: 2rem;
+                margin-top: 5rem; /* Assicurati che i link siano più in basso */
+            }
+        }
 
         @media screen and (max-width: 480px) {
             #model-container {
@@ -198,12 +280,19 @@
     </style>
 </head>
 <body>
+    <div class="hamburger-menu">
+        <div class="bars-container">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
     
-    <div class="nav-container">
+    <nav class="nav-container">
         <a href="about.html" class="nav-item">&#x21B3; ABOUT</a>
         <a href="contact.html" class="nav-item">&#x21B3; CONTACT</a>
         <a href="support.html" class="nav-item">&#x21B3; SUPPORT US</a>
-    </div>
+    </nav>
 
     <div class="artwork-container">
         <a href="index.html">
@@ -213,7 +302,7 @@
 
     <div class="about-content">
         <div class="about-section">
-            <h2>Why?</h2>
+            <h2>?</h2>
             <p> Pick Up The Cake It is a self-supporting label, it does not make money, it tries to finance as many projects as possible,
                  even going so far as to physically print, records, vinyl, and cassettes. Thanks also to merch purchases or downloads of PUTC productions that we could accomplish more things</p>
         </div>
@@ -222,3 +311,16 @@
 
         
    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger-menu');
+            const navContainer = document.querySelector('.nav-container');
+            
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navContainer.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
