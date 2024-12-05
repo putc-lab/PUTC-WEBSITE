@@ -29,11 +29,11 @@
         }
 
         .nav-container {
-            display: flex;
+            position: fixed;
+            background: rgba(0, 0, 0, 0.95);
             top: 0;
             right: 0;
             gap: 4rem;
-            font-family: ABCDiatype-Medium, sans-serif;
             padding: 1rem;
             z-index: 1000;
             display: flex;
@@ -414,13 +414,93 @@
 
         @media screen and (max-width: 780px) {
             .nav-container {
-               
+                width: 100%;
                 padding: 0.5rem;
                 gap: 1rem;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background: rgb(101, 47, 228);
+                display: none; /* Nascondi di default */
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 60px; /* Spazio per il menu hamburger */
+            }
+            .nav-container.active {
+                display: flex; /* Mostra quando attivo */
+            }
+            .nav-container .nav-item {
+                color: white;
+                font-size: 2rem;
+                margin-top: 5rem; /* Assicurati che i link siano più in basso */
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .hamburger-menu {
+                display: block;
+                position: fixed;
+                top: 0;
+                right: 0;
+                z-index: 1001;
+                cursor: pointer;
+                background: none;
+                padding: 1rem;
+                width: 60px;
+            }
+            .artwork-container img {
+            max-width: 100%;
+            width: 50px;
+            height: auto;
+            cursor: pointer;
+        }
+            .bars-container {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                width: 25px;
+                margin: 0 auto;
+            }
+            
+            .bar {
+                width: 25px;
+                height: 3px;
+                background-color: rgb(0, 0, 0);
+                transition: 0.3s;
+            }
+            
+            .nav-container {
+                display: none;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: rgb(125, 65, 255);
+                padding-top: 60px;
+                transition: 0.3s;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-container.active {
+                right: 0;
+                display: flex;
             }
 
-            .artwork-container {
-                width: 50px;
+            /* Hamburger animation */
+            .hamburger-menu.active .bar:first-child {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .hamburger-menu.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger-menu.active .bar:last-child {
+                transform: rotate(45deg) translate(-5px, -6px);
             }
 
             .album-content {
@@ -467,9 +547,6 @@
             .bottom-player .progress-container {
                 width: calc(100% - 120px);
             }
-
-
-        
         }
         @media screen and (max-width: 480px) {
             .album-content {
@@ -489,11 +566,19 @@
     </style>
 </head>
 <body>
-    <div class="nav-container">
+    <div class="hamburger-menu">
+        <div class="bars-container">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
+    
+    <nav class="nav-container">
         <a href="about.html" class="nav-item">&#x21B3; ABOUT</a>
         <a href="contact.html" class="nav-item">&#x21B3; CONTACT</a>
         <a href="support.html" class="nav-item">&#x21B3; SUPPORT US</a>
-    </div>
+    </nav>
 
     <div class="artwork-container">
         <a href="index.html">
@@ -794,6 +879,16 @@
             const audio = document.getElementById('bottomAudio');
             players.bottom.audio = audio;
             resetPlayer('bottom');
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger-menu');
+            const navContainer = document.querySelector('.nav-container');
+            
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navContainer.classList.toggle('active');
+            });
         });
     </script>
 </body>
