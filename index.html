@@ -57,12 +57,12 @@
         color: #b400fb;
     }
     .artwork-container {
-        position: fixed;
+        
         justify-content: center;
         align-items: center;
         width: 120px;
         height: auto;
-       
+      display: flex; 
         top: 0;
         left: 0;
         margin-left: 0.5rem;
@@ -312,14 +312,86 @@
         height: 100vh;
     }
 
-    /* Media Queries */
+    /* Hamburger menu styles */
+    .hamburger-menu {
+        display: none;
+    }
+        
+    @media screen and (max-width: 768px) {
+        .hamburger-menu {
+            display: block;
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 1001;
+            cursor: pointer;
+            
+            padding: 1rem;
+            width: 60px;
+        }
+        
+        .bars-container {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            width: 25px;
+            margin: 0 auto;
+        }
+        
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            transition: 0.3s;
+        }
+        
+        .nav-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 250px;
+            height: 100vh;
+            background: rgba(125, 65, 255, 0.95);
+            padding-top: 60px;
+            transition: 0.3s;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .nav-container.active {
+            right: 0;
+            display: flex;
+        }
+
+        .nav-container .nav-item {
+            color: white;
+            font-size: 1.2rem;
+            margin: 2rem 0;
+            top: 20px;
+        }
+
+        /* Hamburger animation */
+        .hamburger-menu.active .bar:first-child {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger-menu.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active .bar:last-child {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+    }
+
     @media screen and (max-width: 1200px) {
         .images-container {
             justify-content: center;
             
             margin-top: 0px;
         }
-        
         .image-box video {
             width: 300px;
         }
@@ -327,11 +399,29 @@
 
     @media screen and (max-width: 780px) {
         .nav-container {
+            width: 100%;
            padding: 0.5rem;
                 gap: 1rem;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background: rgb(101, 47, 228);
+                display: none; /* Nascondi di default */
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 60px; /* Spazio per il menu hamburger */
         }
-        
+        .nav-container.active {
+            display: flex; /* Mostra quando attivo */
+        }
+        .nav-container .nav-item {
+            font-size: 2rem;
+            margin-top: 4rem; /* Assicurati che i link siano più in basso */
+        }
         .artwork-container {
+            z-index: 100;
             width: 80px;
         }
         
@@ -374,9 +464,6 @@
         #scene-container {
             height: 35vh;
         }
-
-
-        
         .instructions {
             font-size: 12px;
             text-align: center;
@@ -407,21 +494,48 @@
 
     /* Orientamento landscape su mobile */
     @media screen and (max-height: 450px) and (orientation: landscape) {
-       
-        
-        
-        
         .instructions {
             bottom: 70px;
             font-size: 11px;
         }
     }
+
+    body.no-scroll {
+        overflow: hidden;
+    }
+
+    @media screen and (max-width: 780px) {
+        .nav-container {
+            width: 100%;
+            padding: 0.5rem;
+            gap: 1rem;
+            align-items: center;
+            text-align: center;
+        }
+        .nav-container .nav-item {
+            font-size: 2rem;
+            margin-top: 5rem; /* Assicurati che i link siano più in basso */
+            text-align: center;
+
+        }
+        .artwork-container {
+            width: 50px;
+        }
+    }
 </style>
 <body>
+    <div class="hamburger-menu">
+        <div class="bars-container">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </div>
+
     <div class="nav-container">
         <a href="about.html" class="nav-item">&#x21B3; ABOUT</a>
-        <a href="contact.html" class="nav-item">&#x21B3; CONTACT</a>
-        <a href="support.html" class="nav-item">&#x21B3; SUPPORT US</a>
+            <a href="contact.html" class="nav-item">&#x21B3; CONTACT</a>
+            <a href="support.html" class="nav-item">&#x21B3; SUPPORT US</a>     
     </div>
     <div class="artwork-container">
         <a href="index.html">
@@ -988,7 +1102,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         if (synth) {
                             const frequency = 220 + (touchSpeed * 2);
                             synth.frequency.setValueAtTime(frequency, Tone.now());
-                            synth.triggerAttackRelease(frequency, '32n');
+                            synth.triggerAttackRelease(frequency, "32n");
                         }
                     }
                 } 
@@ -1150,6 +1264,25 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelector('.desktop-instructions').style.display = 'none';
             document.querySelector('.mobile-instructions').style.display = 'block';
         }
+    </script>
+
+    <script>
+        document.querySelector('.hamburger-menu').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.nav-container').classList.toggle('active');
+            document.body.classList.toggle('no-scroll', document.querySelector('.nav-container').classList.contains('active'));
+        });
+    </script>
+
+    <script>
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelector('.hamburger-menu').classList.remove('active');
+                document.querySelector('.nav-container').classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            });
+        });
     </script>
 
     <script>
