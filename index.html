@@ -56,15 +56,72 @@
     .nav-item:hover {
         color: #b400fb;
     }
+    .splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-family: ABCDiatype-Medium, sans-serif;
+    font-size: 7rem;
+    font-weight: bold;
+    font-style: italic;
+    background-color: rgb(127, 39, 204);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeOut 3s forwards;
+}
+
+.splash-text {
+    color: white;
+    font-size: 3rem;
+    font-family: ABCDiatype-Medium, sans-serif;
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    80% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Aggiunta media query per dispositivi mobili */
+@media screen and (max-width: 768px) {
+    .splash-text {
+        font-size: 2rem;
+    }
+}
     .artwork-container {
-        position: absolute;
+        position: fixed;
+        justify-content: center;
+        align-items: center;
+        width: 120px;
+        height: auto;
+       
         top: 0;
         left: 0;
-        z-index: 1002;
-        display: flex;
-        align-items: center;
         margin-left: 0.5rem;
-        width: 100px;
+        
     }
     .artwork-container img {
         max-width: 100%;
@@ -310,85 +367,14 @@
         height: 100vh;
     }
 
-    /* Hamburger menu styles */
-    .hamburger-menu {
-        display: none;
-    }
-        
-    @media screen and (max-width: 768px) {
-        .hamburger-menu {
-            display: block;
-            position: absolute;
-            top: 0;
-            right: 0;
-            z-index: 1001;
-            cursor: pointer;
-            
-            padding: 1rem;
-            width: 60px;
-        }
-        
-        .bars-container {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            width: 25px;
-            margin: 0 auto;
-        }
-        
-        .bar {
-            width: 25px;
-            height: 3px;
-            background-color: white;
-            transition: 0.3s;
-        }
-        
-        .nav-container {
-            display: none;
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 250px;
-            height: 100vh;
-            background: #b400fb;
-            transition: 0.3s;
-            flex-direction: column;
-            gap: 1rem;
-            align-items: center;
-        }
-        
-        .nav-container.active {
-            right: 0;
-            display: flex;
-        }
-
-        .nav-container .nav-item {
-            color: white;
-            font-size: 1.2rem;
-            margin: 2rem 0;
-            top: 20px;
-        }
-
-        /* Hamburger animation */
-        .hamburger-menu.active .bar:first-child {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-
-        .hamburger-menu.active .bar:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger-menu.active .bar:last-child {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-    }
-
+    /* Media Queries */
     @media screen and (max-width: 1200px) {
         .images-container {
             justify-content: center;
             
             margin-top: 0px;
         }
+        
         .image-box video {
             width: 300px;
         }
@@ -396,32 +382,12 @@
 
     @media screen and (max-width: 780px) {
         .nav-container {
-            width: 100%;
-            padding: 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: #b400fb;
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            z-index: 999;
+           padding: 0.5rem;
+                gap: 1rem;
         }
-        .nav-container.active {
-            display: flex;
-        }
-        .nav-container .nav-item {
-            color: white;
-            font-size: 2rem;
-            text-align: center;
-            width: 100%;
-        }
+        
         .artwork-container {
-            z-index: 1002;
-            width: 70px;
+            width: 80px;
         }
         
         .image-box video {
@@ -447,12 +413,12 @@
 
     @media screen and (max-width: 768px) {
         .nav-container {
-            padding: 0;
+            padding: 0.5rem;
             gap: 1rem;
         }
         
         .artwork-container {
-            width: 70px;
+            width: 60px;
             margin-left: 0.5rem;
         }
         
@@ -463,6 +429,9 @@
         #scene-container {
             height: 35vh;
         }
+
+
+        
         .instructions {
             font-size: 12px;
             text-align: center;
@@ -474,7 +443,7 @@
    
 
         .artwork-container {
-            width: 70px;
+            width: 50px;
             
         }
 
@@ -493,48 +462,23 @@
 
     /* Orientamento landscape su mobile */
     @media screen and (max-height: 450px) and (orientation: landscape) {
+       
+        
+        
+        
         .instructions {
             bottom: 70px;
             font-size: 11px;
         }
     }
-
-    body.no-scroll {
-        overflow: hidden;
-    }
-
-    @media screen and (max-width: 780px) {
-        .nav-container {
-            width: 100%;
-            padding: 0;
-            gap: 1rem;
-            align-items: center;
-            text-align: center;
-        }
-        .nav-container .nav-item {
-            font-size: 2rem;
-           
-            text-align: center;
-
-        }
-        .artwork-container {
-            width: 70px;
-        }
-    }
 </style>
 <body>
-    <div class="hamburger-menu">
-        <div class="bars-container">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
+    <div class="splash-screen">
+        <div class="splash-text">Pick Up The Cake</div>
     </div>
-
     <div class="nav-container">
         <a href="about.html" class="nav-item">&#x21B3; ABOUT</a>
-            <a href="contact.html" class="nav-item">&#x21B3; CONTACT</a>
-            <a href="support.html" class="nav-item">&#x21B3; SUPPORT US</a>     
+        <a href="contact.html" class="nav-item">&#x21B3; CONTACT</a>
     </div>
     <div class="artwork-container">
         <a href="index.html">
@@ -1101,7 +1045,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         if (synth) {
                             const frequency = 220 + (touchSpeed * 2);
                             synth.frequency.setValueAtTime(frequency, Tone.now());
-                            synth.triggerAttackRelease(frequency, "32n");
+                            synth.triggerAttackRelease(frequency, '32n');
                         }
                     }
                 } 
@@ -1266,25 +1210,6 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
 
     <script>
-        document.querySelector('.hamburger-menu').addEventListener('click', function() {
-            this.classList.toggle('active');
-            document.querySelector('.nav-container').classList.toggle('active');
-            document.body.classList.toggle('no-scroll', document.querySelector('.nav-container').classList.contains('active'));
-        });
-    </script>
-
-    <script>
-        // Close menu when clicking a link
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', () => {
-                document.querySelector('.hamburger-menu').classList.remove('active');
-                document.querySelector('.nav-container').classList.remove('active');
-                document.body.classList.remove('no-scroll');
-            });
-        });
-    </script>
-
-    <script>
         document.addEventListener('DOMContentLoaded', function() {
             let timer = null;
             window.addEventListener('scroll', function() {
@@ -1350,5 +1275,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 150);
         }, { passive: true });
     </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            document.querySelector('.splash-screen').style.display = 'none';
+        }, 3000);
+    });
+</script>
+
 </body>
 </html>
