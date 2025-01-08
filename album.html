@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jan Jizz Trio - Live In Italy</title>
-     <link rel="icon" sizes="32x32" href="artworw-purp.png">
+    <link rel="icon" sizes="32x32" href="artworw-purp.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* Scrollbar unica */
         ::-webkit-scrollbar {
             width: 4px;
         }
-        
+
         ::-webkit-scrollbar-track {
             background: #1a1a1a;
         }
-        
+
         ::-webkit-scrollbar-thumb {
             background: #be3bff;
             border-radius: 2px;
@@ -86,7 +87,7 @@
             font-family: abcdiatype-medium, sans-serif;
             letter-spacing: -.5px;
             font-weight: normal;
-            font-style: italic; 
+            font-style: italic;
             margin-bottom: 20px;
         }
 
@@ -148,6 +149,14 @@
             padding: 20px;
         }
 
+        .bio-credits {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #7d7c7c;
+            line-height: 1.6;
+            text-align: right;
+        }
+
         .album-credits {
             margin-top: 30px;
             font-size: 0.9rem;
@@ -155,7 +164,13 @@
             line-height: 1.6;
             text-align: right;
         }
-
+ .band-members {
+           
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
+            text-align: right;
+        }
         .credit-item {
             margin-bottom: 8px;
         }
@@ -372,7 +387,7 @@
             color: #000000;
             font-family: Abcdiatype-Medium, sans-serif;
             font-style: italic;
-            
+
             font-size: 0.9rem;
             margin-top: 10px;
         }
@@ -390,6 +405,7 @@
             align-items: center;
             z-index: 1000;
         }
+
         .overlay img {
             max-width: 80%;
             max-height: 80%;
@@ -430,9 +446,11 @@
                 height: 100vh;
                 gap: 2rem;
             }
+
             .nav-container.active {
                 display: flex;
             }
+
             .nav-container .nav-item {
                 color: white;
                 font-size: 2rem;
@@ -454,6 +472,7 @@
                 padding: 1rem;
                 width: 60px;
             }
+
             .artwork-container {
                 top: 0px;
                 left: 0;
@@ -468,6 +487,7 @@
                 width: 70px;
                 height: auto;
             }
+
             .bars-container {
                 display: flex;
                 flex-direction: column;
@@ -475,14 +495,14 @@
                 width: 25px;
                 margin: 0 auto;
             }
-            
+
             .bar {
                 width: 25px;
                 height: 3px;
                 background-color: rgb(0, 0, 0);
                 transition: 0.3s;
             }
-            
+
             .nav-container {
                 display: none;
                 position: fixed;
@@ -491,12 +511,12 @@
                 width: 100%;
                 height: 100vh;
                 background: #b400fb;
-                
+
                 transition: 0.3s;
                 flex-direction: column;
                 gap: 1rem;
             }
-            
+
             .nav-container.active {
                 right: 0;
                 display: flex;
@@ -542,8 +562,8 @@
             .album-description {
                 font-size: 0.9rem;
             }
-
-            .album-credits {
+            
+            .bio-credits {
                 margin-top: 20px;
                 margin-bottom: 50px;
                 font-size: 0.85rem;
@@ -560,14 +580,16 @@
                 width: calc(100% - 120px);
             }
         }
+
         @media screen and (max-width: 480px) {
             .album-content {
                 margin: 50px auto 80px;
             }
+
             .overlay img {
                 max-width: 100%;
                 max-height: 100%;
-        }
+            }
 
 
             .album-credits {
@@ -577,6 +599,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="hamburger-menu">
         <div class="bars-container">
@@ -585,7 +608,7 @@
             <div class="bar"></div>
         </div>
     </div>
-    
+
     <nav class="nav-container">
         <a href="about.html" class="nav-item">&#x21B3; ABOUT</a>
         <a href="contact.html" class="nav-item">&#x21B3; CONTACT</a>
@@ -610,67 +633,107 @@
                 <li class="track-item">
                     <span class="track-number">1</span>
                     <span class="track-title">FAI</span>
-                    <button class="play-button" onclick="playSong('bottom', 'ALBUM/Jaz Jizz Trio_Master/1_FAI_Master.wav', 'FAI')">
+                    <button class="play-button"
+                        onclick="playSong('bottom', 'ALBUM/Jaz Jizz Trio_Master/1_FAI_Master.wav', 'FAI')">
                         <i class="fas fa-play"></i>
                     </button>
                 </li>
                 <li class="track-item">
                     <span class="track-number">2</span>
                     <span class="track-title">Derek</span>
-                    <button class="play-button" onclick="playSong('bottom', 'ALBUM/Jaz Jizz Trio_Master/2. Derek_Master.wav', 'Derek')">
+                    <button class="play-button"
+                        onclick="playSong('bottom', 'ALBUM/Jaz Jizz Trio_Master/2. Derek_Master.wav', 'Derek')">
                         <i class="fas fa-play"></i>
                     </button>
                 </li>
                 <li class="track-item">
                     <span class="track-number">3</span>
                     <span class="track-title">Le solite beghe</span>
-                    <button class="play-button" onclick="playSong('bottom', 'ALBUM/Jaz Jizz Trio_Master/3. Le solite beghe. w:Marcello Rotondella_master.wav', 'Le solite beghe')">
+                    <button class="play-button"
+                        onclick="playSong('bottom', 'ALBUM/Jaz Jizz Trio_Master/3. Le solite beghe. w:Marcello Rotondella_master.wav', 'Le solite beghe')">
                         <i class="fas fa-play"></i>
                     </button>
                 </li>
                 <li class="track-item">
                     <span class="track-number">4</span>
                     <span class="track-title">Mai Usato</span>
-                    <button class="play-button" onclick="playSong('bottom', 'ALBUM/Jaz Jizz Trio_Master/4. Mai Usato_Master.wav', 'Mai Usato')">
+                    <button class="play-button"
+                        onclick="playSong('bottom', 'ALBUM/Jaz Jizz Trio_Master/4. Mai Usato_Master.wav', 'Mai Usato')">
                         <i class="fas fa-play"></i>
                     </button>
                 </li>
                 <li class="track-item">
                     <span class="track-number">5</span>
                     <span class="track-title">Surgelati</span>
-                    <button class="play-button" onclick="playSong('bottom', 'ALBUM/Jaz Jizz Trio_Master/5. Surgelati_Master.wav', 'Surgelati')">
+                    <button class="play-button"
+                        onclick="playSong('bottom', 'ALBUM/Jaz Jizz Trio_Master/5. Surgelati_Master.wav', 'Surgelati')">
                         <i class="fas fa-play"></i>
                     </button>
                 </li>
                 <li class="track-item">
                     <span class="track-number">6</span>
                     <span class="track-title">Un Inverno</span>
-                    <button class="play-button" onclick="playSong('bottom', 'ALBUM/Jaz Jizz Trio_Master/6. un Inverno_Master.wav', 'Un Inverno')">
+                    <button class="play-button"
+                        onclick="playSong('bottom', 'ALBUM/Jaz Jizz Trio_Master/6. un Inverno_Master.wav', 'Un Inverno')">
                         <i class="fas fa-play"></i>
                     </button>
                 </li>
                 <li class="track-item">
                     <span class="track-number">7</span>
                     <span class="track-title">Valle Di Lanzo</span>
-                    <button class="play-button" onclick="playSong('bottom', 'ALBUM/Jaz Jizz Trio_Master/7. Valle Di Lanzo_Master.wav', 'Valle Di Lanzo')">
+                    <button class="play-button"
+                        onclick="playSong('bottom', 'ALBUM/Jaz Jizz Trio_Master/7. Valle Di Lanzo_Master.wav', 'Valle Di Lanzo')">
                         <i class="fas fa-play"></i>
                     </button>
                 </li>
             </ul>
             <div class="album-description">
-                Live In Italy is the first album by the Jan Jizz Trio. The album was recorded in one take, capturing the raw energy and improvisation of the trio's live performances. It is a digital jazz metamorphosis, a delicate blending that moves between ambient and metaphysical shores of contemporary electronics, between arpeggios and distant dissonant voices, warm melodies that try to tell something, something that tries to touch
+                Live In Italy is a new outcome by the Jan Jizz Trio.  Through the MIDI protocol, a powerful language of
+                mediation, ephemeral trajectories are drawn between ambient and contemporary electronics, embarking the
+                listeners on new paths overlooking landscapes that oscillating from warmth of melody and the numerical
+                programming. Dissonances emerge as memory units, fading like smoke in the span of a clock’s ticking.
+                Here, musicians neither dominate the machine nor is dominated by it. They simply create instant
+                compositions into a suspended territory, where electronics take on corporeal form, a resonant
+                antechamber of worlds where humans and machines engage in porous, highly fluid relationships.
+               
+                Jan Jizz is Danish composer from Veksø,. Drawing from his roots in a family of Methodist gabba
+                enthusiasts and inspired by his mentor Mats Söderlund, Jizz merges tradition and experimentation,
+                redefining contemporary jazz limits through innovative use of technology. This is his first trio album,
+                recorded and produced entirely live in the studio. It marks his debut with Pick Up the Cake. Jan Jizz
+                extends his gratitude to all the people, software, and hardware that made this project possible.
+<div class="bio-credits">
+                <p>Jan Jizz is Danish composer from Veksø,. Drawing from his roots in a family of Methodist gabba
+                    enthusiasts and inspired by his mentor Mats Söderlund, Jizz merges tradition and experimentation,
+                    redefining contemporary jazz limits through innovative use of technology. This is his first trio album,
+                    recorded and produced entirely live in the studio. It marks his debut with Pick Up the Cake. Jan Jizz
+                    extends his gratitude to all the people, software, and hardware that made this project possible.</p>
+            </div>
             </div>
             <div class="album-credits">
                 <div class="credit-item">
                     <span class="credit-label">Release Date:</span>
-                    <span>December 17, 2024</span>
+                    <span>January 8, 2024</span>
                 </div>
+                <div class="band-members">
+                    <div class="credit-item">
+                        <span class="credit-label">Jan Jazz trio are:</span>
+                        <span>Jan Jazz - Computers</span>
+                        <span><br>Luca Mezzano - Digital Winds 
+                            <br>Antonino Asta - Drum Machine</span>
+                    </div>
                 <div class="credit-item">
                     <span class="credit-label">Music Composed by:</span>
                     <span>Jan Jizz Trio</span>
                 </div>
                 <div class="credit-item">
-                    <span class="credit-label">Mixed and Mastered by:</span>
+                    <span class="credit-label">Vocal sampling: </span> <span>Jason La Mecca</span>
+                </div>
+                <div class="credit-item">
+                    <span class="credit-label">Graphic Design by:</span>
+                    <span>Silvia Basano</span>
+                </div>
+                <div class="credit-item">
+                    <span class="credit-label">Produced and Mastered by:</span>
                     <span>mvrgn</span>
                 </div>
             </div>
@@ -720,8 +783,8 @@
             </div>
             <div class="volume-container">
                 <i class="fas fa-volume-up" onclick="toggleMute('bottom')"></i>
-                <input type="range" id="bottom-volume" min="0" max="1" step="0.1" value="1" 
-                       oninput="setVolume('bottom', this.value)">
+                <input type="range" id="bottom-volume" min="0" max="1" step="0.1" value="1"
+                    oninput="setVolume('bottom', this.value)">
             </div>
         </div>
     </div>
@@ -733,13 +796,13 @@
             bottom: {
                 currentSong: 0,
                 playlist: [
-                    {src: 'ALBUM/Jaz Jizz Trio_Master/1_FAI_Master.wav', title: 'FAI'},
-                    {src: 'ALBUM/Jaz Jizz Trio_Master/2. Derek_Master.wav', title: 'Derek'},
-                    {src: 'ALBUM/Jaz Jizz Trio_Master/3. Le solite beghe. w:Marcello Rotondella_master.wav', title: 'Le solite beghe'},
-                    {src: 'ALBUM/Jaz Jizz Trio_Master/4. Mai Usato_Master.wav', title: 'Mai Usato'},
-                    {src: 'ALBUM/Jaz Jizz Trio_Master/5. Surgelati_Master.wav', title: 'Surgelati'},
-                    {src: 'ALBUM/Jaz Jizz Trio_Master/6. un Inverno_Master.wav', title: 'Un Inverno'},
-                    {src: 'ALBUM/Jaz Jizz Trio_Master/7. Valle Di Lanzo_Master.wav', title: 'Valle Di Lanzo'}
+                    { src: 'ALBUM/Jaz Jizz Trio_Master/1_FAI_Master.wav', title: 'FAI' },
+                    { src: 'ALBUM/Jaz Jizz Trio_Master/2. Derek_Master.wav', title: 'Derek' },
+                    { src: 'ALBUM/Jaz Jizz Trio_Master/3. Le solite beghe. w:Marcello Rotondella_master.wav', title: 'Le solite beghe' },
+                    { src: 'ALBUM/Jaz Jizz Trio_Master/4. Mai Usato_Master.wav', title: 'Mai Usato' },
+                    { src: 'ALBUM/Jaz Jizz Trio_Master/5. Surgelati_Master.wav', title: 'Surgelati' },
+                    { src: 'ALBUM/Jaz Jizz Trio_Master/6. un Inverno_Master.wav', title: 'Un Inverno' },
+                    { src: 'ALBUM/Jaz Jizz Trio_Master/7. Valle Di Lanzo_Master.wav', title: 'Valle Di Lanzo' }
                 ],
                 isPlaying: false,
                 audio: null
@@ -749,7 +812,7 @@
         function playSong(type, src, title) {
             const player = players[type];
             const audio = document.getElementById(type + 'Audio');
-            
+
             // Find the index of the song in the playlist
             const songIndex = player.playlist.findIndex(song => song.src === src);
             if (songIndex !== -1) {
@@ -759,7 +822,7 @@
             // Update audio source and title
             audio.src = src;
             document.getElementById(type + '-song-title').textContent = title;
-            
+
             // Start playing
             audio.play()
                 .then(() => {
@@ -858,10 +921,10 @@
             const progressBar = document.getElementById(type + '-progress');
             const currentTimeSpan = document.getElementById(type + '-current-time');
             const durationSpan = document.getElementById(type + '-duration');
-            
+
             const progress = (audio.currentTime / audio.duration) * 100;
             progressBar.style.width = progress + '%';
-            
+
             currentTimeSpan.textContent = formatTime(audio.currentTime);
             durationSpan.textContent = formatTime(audio.duration);
         }
@@ -887,21 +950,22 @@
         }
 
         // Initialize player on page load
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const audio = document.getElementById('bottomAudio');
             players.bottom.audio = audio;
             resetPlayer('bottom');
         });
 
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const hamburger = document.querySelector('.hamburger-menu');
             const navContainer = document.querySelector('.nav-container');
-            
-            hamburger.addEventListener('click', function() {
+
+            hamburger.addEventListener('click', function () {
                 this.classList.toggle('active');
                 navContainer.classList.toggle('active');
             });
         });
     </script>
 </body>
+
 </html>
