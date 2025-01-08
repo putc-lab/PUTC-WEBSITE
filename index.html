@@ -62,11 +62,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    font-family: ABCDiatype-Medium, sans-serif;
-    font-size: 7rem;
-    font-weight: bold;
-    font-style: italic;
-    background-color: rgb(127, 39, 204);
+    background-color: rgb(143, 20, 210);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -78,6 +74,8 @@
     color: white;
     font-size: 3rem;
     font-family: ABCDiatype-Medium, sans-serif;
+    font-weight: bold;
+    font-style: italic;
     animation: fadeIn 1s ease-in;
 }
 
@@ -111,6 +109,77 @@
         font-size: 2rem;
     }
 }
+
+ @media screen and (max-width: 768px) {
+             .hamburger-menu {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1001;
+        cursor: pointer;
+        background: none;
+        padding: 1rem;
+        width: 60px;
+    }
+
+       .bars-container {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 25px;
+        margin: 0 auto;
+    }
+               .bar {
+        width: 25px;
+        height: 3px;
+        background-color: rgb(255, 255, 255);
+        transition: 0.3s;
+    }
+
+
+            .nav-container {
+                display: none;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: #b400fb;
+                transition: 0.3s;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .nav-container.active {
+                right: 0;
+                display: flex;
+            }
+
+          /* Hamburger animation */
+    .hamburger-menu.active .bar:first-child {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .hamburger-menu.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger-menu.active .bar:last-child {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+
+            .nav-item {
+                color: white;
+                font-size: 2rem;
+                text-align: center;
+                width: 100%;
+                padding: 1rem 0;
+            }
+        }
     .artwork-container {
         position: fixed;
         justify-content: center;
@@ -473,12 +542,20 @@
     }
 </style>
 <body>
-    <div class="splash-screen">
-        <div class="splash-text">Pick Up The Cake</div>
+    <div class="hamburger-menu">
+        <div class="bars-container">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
     </div>
     <div class="nav-container">
         <a href="about.html" class="nav-item">&#x21B3; ABOUT</a>
         <a href="contact.html" class="nav-item">&#x21B3; CONTACT</a>
+        <a href="support.html" class="nav-item">&#x21B3; SUPPORT US</a>
+    </div>
+    <div class="splash-screen">
+        <div class="splash-text">Pick Up The Cake</div>
     </div>
     <div class="artwork-container">
         <a href="index.html">
@@ -1274,15 +1351,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 scrolling = false;
             }, 150);
         }, { passive: true });
+
+        
     </script>
+    <script>document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(function () {
+                const splash = document.querySelector('.splash-screen');
+                splash.style.display = 'none';
+            }, 3000);
+        });</script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(function() {
-            document.querySelector('.splash-screen').style.display = 'none';
-        }, 3000);
-    });
-</script>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger-menu');
+            const nav = document.querySelector('.nav-container');
+            
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                nav.classList.toggle('active');
+            });
+        });
+    </script>
 </body>
 </html>
