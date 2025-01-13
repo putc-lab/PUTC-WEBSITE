@@ -7,597 +7,8 @@
     <title>Jan Jizz Trio - Live In Italy</title>
     <link rel="icon" sizes="32x32" href="artworw-purp.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        /* Scrollbar unica */
-        ::-webkit-scrollbar {
-            width: 4px;
-        }
+    <link rel="stylesheet" href="css/album.css">
 
-        ::-webkit-scrollbar-track {
-            background: #1a1a1a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #be3bff;
-            border-radius: 2px;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: rgb(255, 255, 255);
-            color: rgb(0, 0, 0);
-            font-family: Arial, sans-serif;
-        }
-
-        .nav-container {
-            position: absolute;
-            display: flex;
-            background: none;
-            top: 0;
-            right: 0;
-            gap: 4rem;
-            padding: 1rem;
-            z-index: 1000;
-            display: flex;
-            justify-content: flex-end;
-            width: auto;
-        }
-
-        .nav-item {
-            color: rgb(0, 0, 0);
-            text-decoration: none;
-            font-family: ABCDiatype-Medium, sans-serif;
-            font-weight: bold;
-            margin-left: 2rem;
-            font-size: 1rem;
-            transition: color 0.3s ease;
-        }
-
-        .nav-item:hover {
-            color: #b400fb;
-        }
-
-        .album-content {
-            max-width: 1200px;
-            margin: 50px auto;
-            padding: 20px;
-            display: flex;
-            gap: 40px;
-        }
-
-        .album-artwork {
-            flex: 0 0 400px;
-        }
-
-        .album-artwork img {
-            width: 100%;
-            margin-top: 90px;
-            height: auto;
-        }
-
-        .album-info {
-            flex: 1;
-            margin-top: 60px;
-        }
-
-        .album-info h1 {
-            color: #000000;
-            font-size: 1.5em;
-            font-family: abcdiatype-medium, sans-serif;
-            letter-spacing: -.5px;
-            font-weight: normal;
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-
-        .album-info h2 {
-            color: #000000;
-            font-size: 2.5em;
-            font-family: abcdiatype-medium, sans-serif;
-            letter-spacing: -.5px;
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-
-        .track-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .track-item {
-            padding: 15px 0;
-            border-bottom: 1px solid #333;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .track-number {
-            color: #000000;
-            font-size: 1.2em;
-            width: 30px;
-        }
-
-        .track-title {
-            flex: 1;
-        }
-
-        .play-button {
-            color: rgb(0, 0, 0);
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.2em;
-            padding: 5px;
-        }
-
-        .play-button:hover {
-            color: #b400fb;
-        }
-
-        .album-description {
-            margin-top: 40px;
-            margin-bottom: 40px;
-            color: #000000;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            font-family: abcdiatype-medium, sans-serif;
-            font-style: italic;
-            text-align: right;
-            border: 1px solid #b400fb;
-            padding: 20px;
-        }
-
-        .bio-credits {
-            margin-top: 30px;
-            font-size: 0.9rem;
-            color: #7d7c7c;
-            line-height: 1.6;
-            text-align: right;
-        }
-
-        .album-credits {
-            margin-top: 30px;
-            font-size: 0.9rem;
-            color: #666;
-            line-height: 1.6;
-            text-align: right;
-        }
- .band-members {
-           
-            font-size: 0.9rem;
-            color: #666;
-            line-height: 1.6;
-            text-align: right;
-        }
-        .credit-item {
-            margin-bottom: 8px;
-        }
-
-        .credit-label {
-            font-weight: bold;
-            color: #333;
-        }
-
-        .bottom-player {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            width: 100vw;
-            height: 60px;
-            background: rgb(0, 0, 0);
-            z-index: 1000;
-            border: 1px solid #b400fb;
-            border-bottom: none;
-            box-sizing: border-box;
-        }
-
-        .bottom-player .custom-player {
-            position: relative;
-            width: 100%;
-            height: 60px;
-        }
-
-        .bottom-player .controls {
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            font-size: 0;
-            white-space: nowrap;
-        }
-
-        .control-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-            height: 60px;
-            background: white;
-            cursor: pointer;
-            margin: 0;
-            border-right: 1px solid #eee;
-        }
-
-        .control-container:last-child {
-            border-right: none;
-        }
-
-        .bottom-player .control-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            background: white;
-            cursor: pointer;
-            margin: 0;
-        }
-
-        .bottom-player .control-button i {
-            color: #080808;
-            font-size: 18px;
-        }
-
-        .bottom-player .control-button:hover {
-            background: #f0f0f0;
-        }
-
-        .bottom-player .control-button i:hover {
-            color: #b400fb;
-        }
-
-        .bottom-player .track-info {
-            position: absolute;
-            left: 200px;
-            top: 50%;
-            transform: translateY(-50%);
-            padding-left: 20px;
-        }
-
-        .bottom-player .song-info {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .bottom-player .title-row {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .bottom-player .song-title {
-            font-size: 14px;
-            color: white;
-            font-weight: bold;
-        }
-
-        .bottom-player .artist-name {
-            font-size: 12px;
-            color: #999;
-            margin-left: 8px;
-        }
-
-        .bottom-player .time-row {
-            font-size: 11px;
-            color: #999;
-            margin-top: 2px;
-        }
-
-        .bottom-player .time-row span {
-            margin: 0 2px;
-        }
-
-        .bottom-player .progress-container {
-            position: absolute;
-            bottom: 2px;
-            left: 200px;
-            width: calc(100% - 220px);
-            height: 2px;
-            background: #333;
-            cursor: pointer;
-        }
-
-        .bottom-player .progress-bar {
-            width: 100%;
-            height: 100%;
-            background: #333;
-            position: relative;
-        }
-
-        .bottom-player .progress {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 0;
-            height: 100%;
-            background: #b400fb;
-            transition: width 0.1s linear;
-        }
-
-        .bottom-player .volume-container {
-            position: absolute;
-            right: 120px;
-            top: 0;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            font-size: 0;
-            white-space: nowrap;
-        }
-
-        .bottom-player .volume-container i {
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-        }
-
-        .bottom-player .volume-container input[type="range"] {
-            width: 100px;
-            height: 4px;
-            -webkit-appearance: none;
-            background: #333;
-            border-radius: 2px;
-            cursor: pointer;
-        }
-
-        .bottom-player .volume-container input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 12px;
-            height: 12px;
-            background: #b400fb;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        .bottom-player .volume-container input[type="range"]::-moz-range-thumb {
-            width: 12px;
-            height: 12px;
-            background: #b400fb;
-            border-radius: 50%;
-            cursor: pointer;
-            border: none;
-        }
-
-        .artwork-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100px;
-            height: auto;
-            position: absolute;
-            top: 0;
-            left: 0;
-            margin-left: 0.5rem;
-        }
-
-        .artwork-container img {
-            max-width: 100%;
-            height: auto;
-            cursor: pointer;
-        }
-
-        .artwork-credit {
-            text-align: center;
-            color: #000000;
-            font-family: Abcdiatype-Medium, sans-serif;
-            font-style: italic;
-
-            font-size: 0.9rem;
-            margin-top: 10px;
-        }
-
-        /* Stili per l'overlay */
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .overlay img {
-            max-width: 80%;
-            max-height: 80%;
-        }
-
-        /* Aggiungendo l'accelerazione hardware per migliorare le prestazioni su dispositivi mobili più vecchi */
-        .image-box {
-            will-change: transform;
-            transform: translateZ(0);
-        }
-
-        /* Media Queries */
-        @media screen and (max-width: 1200px) {
-            .album-content {
-                max-width: 900px;
-                padding: 0 10px;
-                margin: 40px auto;
-            }
-
-            .album-artwork {
-                max-width: 400px;
-            }
-        }
-
-        @media screen and (max-width: 780px) {
-            .nav-container {
-                width: 100%;
-                padding: 0;
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                background: #b400fb;
-                display: none;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-                gap: 2rem;
-            }
-
-            .nav-container.active {
-                display: flex;
-            }
-
-            .nav-container .nav-item {
-                color: white;
-                font-size: 2rem;
-                text-align: center;
-                width: 100%;
-                margin: 2rem;
-            }
-        }
-
-        @media screen and (max-width: 768px) {
-            .hamburger-menu {
-                display: block;
-                position: absolute;
-                top: 0;
-                right: 0;
-                z-index: 1001;
-                cursor: pointer;
-                background: none;
-                padding: 1rem;
-                width: 60px;
-            }
-
-            .artwork-container {
-                top: 0px;
-                left: 0;
-                z-index: 1000;
-                display: flex;
-                align-items: center;
-                margin-left: 0.5rem;
-                width: auto;
-            }
-
-            .artwork-container img {
-                width: 70px;
-                height: auto;
-            }
-
-            .bars-container {
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
-                width: 25px;
-                margin: 0 auto;
-            }
-
-            .bar {
-                width: 25px;
-                height: 3px;
-                background-color: rgb(0, 0, 0);
-                transition: 0.3s;
-            }
-
-            .nav-container {
-                display: none;
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 100%;
-                height: 100vh;
-                background: #b400fb;
-
-                transition: 0.3s;
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .nav-container.active {
-                right: 0;
-                display: flex;
-            }
-
-            /* Hamburger animation */
-            .hamburger-menu.active .bar:first-child {
-                transform: rotate(-45deg) translate(-5px, 6px);
-            }
-
-            .hamburger-menu.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger-menu.active .bar:last-child {
-                transform: rotate(45deg) translate(-5px, -6px);
-            }
-
-            .album-content {
-                flex-direction: column;
-                gap: 20px;
-                margin: 50px auto 100px;
-            }
-
-            .album-artwork {
-                max-width: 350px;
-            }
-
-            .album-artwork img {
-                margin-top: 40px;
-            }
-
-            .album-info {
-                padding: 0 1rem;
-                margin-top: 10px;
-                margin-bottom: 30px;
-            }
-
-            .album-title {
-                font-size: 1.8rem;
-            }
-
-            .album-description {
-                font-size: 0.9rem;
-            }
-            
-            .bio-credits {
-                margin-top: 20px;
-                margin-bottom: 50px;
-                font-size: 0.85rem;
-                padding-bottom: 30px;
-            }
-
-            /* Nascondi volume su mobile */
-            .bottom-player .volume-container {
-                display: none;
-            }
-
-            /* Aggiusta la progress bar senza il volume */
-            .bottom-player .progress-container {
-                width: calc(100% - 120px);
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .album-content {
-                margin: 50px auto 80px;
-            }
-
-            .overlay img {
-                max-width: 100%;
-                max-height: 100%;
-            }
-
-
-            .album-credits {
-                margin-bottom: 40px;
-                padding-bottom: 20px;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -632,7 +43,10 @@
             <ul class="track-list">
                 <li class="track-item">
                     <span class="track-number">1</span>
+                    <span class="track-title">FAI</span>
+
                     <span class="track-title">Non è' La FAI</span>
+
                     <button class="play-button"
                         onclick="playSong('bottom', 'ALBUM/Jaz Jizz Trio_Master/1_FAI_Master.wav', 'FAI')">
                         <i class="fas fa-play"></i>
@@ -640,7 +54,11 @@
                 </li>
                 <li class="track-item">
                     <span class="track-number">2</span>
+
+                    <span class="track-title">Derek</span>
+
                     <span class="track-title">Arrosticini alla Derek</span>
+
                     <button class="play-button"
                         onclick="playSong('bottom', 'ALBUM/Jaz Jizz Trio_Master/2. Derek_Master.wav', 'Derek')">
                         <i class="fas fa-play"></i>
@@ -656,6 +74,9 @@
                 </li>
                 <li class="track-item">
                     <span class="track-number">4</span>
+
+                    <span class="track-title">Mai Usato</span>
+
                     <span class="track-title">Mai Usato il Modulare</span>
                     <button class="play-button"
                         onclick="playSong('bottom', 'ALBUM/Jaz Jizz Trio_Master/4. Mai Usato_Master.wav', 'Mai Usato')">
@@ -664,7 +85,11 @@
                 </li>
                 <li class="track-item">
                     <span class="track-number">5</span>
+
+                    <span class="track-title">Surgelati</span>
+
                     <span class="track-title">Surgelati in sconto</span>
+
                     <button class="play-button"
                         onclick="playSong('bottom', 'ALBUM/Jaz Jizz Trio_Master/5. Surgelati_Master.wav', 'Surgelati')">
                         <i class="fas fa-play"></i>
@@ -672,7 +97,11 @@
                 </li>
                 <li class="track-item">
                     <span class="track-number">6</span>
+
+                    <span class="track-title">Un Inverno</span>
+
                     <span class="track-title">Un Inverno a Romagnano Sesia</span>
+
                     <button class="play-button"
                         onclick="playSong('bottom', 'ALBUM/Jaz Jizz Trio_Master/6. un Inverno_Master.wav', 'Un Inverno')">
                         <i class="fas fa-play"></i>
@@ -680,7 +109,11 @@
                 </li>
                 <li class="track-item">
                     <span class="track-number">7</span>
+
+                    <span class="track-title">Valle Di Lanzo</span>
+
                     <span class="track-title">Valli Di Lanzo</span>
+
                     <button class="play-button"
                         onclick="playSong('bottom', 'ALBUM/Jaz Jizz Trio_Master/7. Valle Di Lanzo_Master.wav', 'Valle Di Lanzo')">
                         <i class="fas fa-play"></i>
@@ -791,181 +224,9 @@
 
     <audio id="bottomAudio" onended="songEnded('bottom')" ontimeupdate="updateProgress('bottom')"></audio>
 
-    <script>
-        let players = {
-            bottom: {
-                currentSong: 0,
-                playlist: [
-                    { src: 'ALBUM/Jaz Jizz Trio_Master/1_FAI_Master.wav', title: 'FAI' },
-                    { src: 'ALBUM/Jaz Jizz Trio_Master/2. Derek_Master.wav', title: 'Derek' },
-                    { src: 'ALBUM/Jaz Jizz Trio_Master/3. Le solite beghe. w:Marcello Rotondella_master.wav', title: 'Le solite beghe' },
-                    { src: 'ALBUM/Jaz Jizz Trio_Master/4. Mai Usato_Master.wav', title: 'Mai Usato' },
-                    { src: 'ALBUM/Jaz Jizz Trio_Master/5. Surgelati_Master.wav', title: 'Surgelati' },
-                    { src: 'ALBUM/Jaz Jizz Trio_Master/6. un Inverno_Master.wav', title: 'Un Inverno' },
-                    { src: 'ALBUM/Jaz Jizz Trio_Master/7. Valle Di Lanzo_Master.wav', title: 'Valle Di Lanzo' }
-                ],
-                isPlaying: false,
-                audio: null
-            }
-        };
 
-        function playSong(type, src, title) {
-            const player = players[type];
-            const audio = document.getElementById(type + 'Audio');
-
-            // Find the index of the song in the playlist
-            const songIndex = player.playlist.findIndex(song => song.src === src);
-            if (songIndex !== -1) {
-                player.currentSong = songIndex;
-            }
-
-            // Update audio source and title
-            audio.src = src;
-            document.getElementById(type + '-song-title').textContent = title;
-
-            // Start playing
-            audio.play()
-                .then(() => {
-                    player.isPlaying = true;
-                    const playPauseIcon = document.getElementById(type + '-play-pause');
-                    playPauseIcon.classList.remove('fa-play');
-                    playPauseIcon.classList.add('fa-pause');
-                })
-                .catch(error => {
-                    console.error('Error playing audio:', error);
-                });
-        }
-
-        function resetPlayer(type) {
-            const player = players[type];
-            const audio = document.getElementById(type + 'Audio');
-            audio.src = player.playlist[player.currentSong].src;
-            document.getElementById(type + '-song-title').textContent = player.playlist[player.currentSong].title;
-        }
-
-        function formatTime(seconds) {
-            if (isNaN(seconds)) return '0:00';
-            const minutes = Math.floor(seconds / 60);
-            seconds = Math.floor(seconds % 60);
-            return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
-        }
-
-        function togglePlay(type) {
-            const player = players[type];
-            const audio = document.getElementById(type + 'Audio');
-            const playPauseIcon = document.getElementById(type + '-play-pause');
-
-            if (audio.paused) {
-                audio.play()
-                    .then(() => {
-                        player.isPlaying = true;
-                        playPauseIcon.classList.remove('fa-play');
-                        playPauseIcon.classList.add('fa-pause');
-                    })
-                    .catch(error => {
-                        console.error('Error playing audio:', error);
-                    });
-            } else {
-                audio.pause();
-                player.isPlaying = false;
-                playPauseIcon.classList.remove('fa-pause');
-                playPauseIcon.classList.add('fa-play');
-            }
-        }
-
-        function previousSong(type) {
-            const player = players[type];
-            player.currentSong = (player.currentSong - 1 + player.playlist.length) % player.playlist.length;
-            const song = player.playlist[player.currentSong];
-            playSong(type, song.src, song.title);
-        }
-
-        function nextSong(type) {
-            const player = players[type];
-            player.currentSong = (player.currentSong + 1) % player.playlist.length;
-            const song = player.playlist[player.currentSong];
-            playSong(type, song.src, song.title);
-        }
-
-        function songEnded(type) {
-            nextSong(type);
-        }
-
-        function setVolume(type, volume) {
-            const audio = document.getElementById(type + 'Audio');
-            audio.volume = volume;
-            players[type].previousVolume = volume;
-        }
-
-        function toggleMute(type) {
-            const audio = document.getElementById(type + 'Audio');
-            const volumeIcon = document.querySelector('.volume-container i');
-            const volumeSlider = document.getElementById(type + '-volume');
-
-            if (audio.volume > 0) {
-                players[type].previousVolume = audio.volume;
-                audio.volume = 0;
-                volumeSlider.value = 0;
-                volumeIcon.classList.remove('fa-volume-up');
-                volumeIcon.classList.add('fa-volume-mute');
-            } else {
-                audio.volume = players[type].previousVolume || 1;
-                volumeSlider.value = players[type].previousVolume || 1;
-                volumeIcon.classList.remove('fa-volume-mute');
-                volumeIcon.classList.add('fa-volume-up');
-            }
-        }
-
-        function updateProgress(type) {
-            const audio = document.getElementById(type + 'Audio');
-            const progressBar = document.getElementById(type + '-progress');
-            const currentTimeSpan = document.getElementById(type + '-current-time');
-            const durationSpan = document.getElementById(type + '-duration');
-
-            const progress = (audio.currentTime / audio.duration) * 100;
-            progressBar.style.width = progress + '%';
-
-            currentTimeSpan.textContent = formatTime(audio.currentTime);
-            durationSpan.textContent = formatTime(audio.duration);
-        }
-
-        function seek(event, type) {
-            const audio = document.getElementById(type + 'Audio');
-            const progressBar = document.getElementById(type + '-progress-bar');
-            const rect = progressBar.getBoundingClientRect();
-            const percent = (event.clientX - rect.left) / rect.width;
-            audio.currentTime = percent * audio.duration;
-        }
-
-        function showImage(src) {
-            const overlay = document.getElementById('imageOverlay');
-            const overlayImage = document.getElementById('overlayImage');
-            overlayImage.src = src;
-            overlay.style.display = 'flex';
-        }
-
-        function hideImage() {
-            const overlay = document.getElementById('imageOverlay');
-            overlay.style.display = 'none';
-        }
-
-        // Initialize player on page load
-        document.addEventListener('DOMContentLoaded', function () {
-            const audio = document.getElementById('bottomAudio');
-            players.bottom.audio = audio;
-            resetPlayer('bottom');
-        });
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const hamburger = document.querySelector('.hamburger-menu');
-            const navContainer = document.querySelector('.nav-container');
-
-            hamburger.addEventListener('click', function () {
-                this.classList.toggle('active');
-                navContainer.classList.toggle('active');
-            });
-        });
-    </script>
+    <script src="js/album.js"></script>
 </body>
 
 </html>
+

@@ -5,289 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pick Up The Cake - About</title>
      <link rel="icon" sizes="32x32" href="artworw-purp.png">
+    <link rel="icon" sizes="32x32" href="artworw-purp.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        /* Scrollbar unica */
-        ::-webkit-scrollbar {
-            width: 4px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #1a1a1a;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: #be3bff;
-            border-radius: 2px;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: black;
-            color: white;
-            font-family: abcdiatype-medium, sans-serif;
-            
-        }
-
-        .artwork-container {
-            display: flex;
-            position: absolute;
-            justify-content: center;
-            align-items: center;
-            width: 100px;
-            height: auto;
-            position: absolute;
-            top: 0;
-            left: 0;
-            margin-left: 0.5rem;
-        }
-
-        .artwork-container img {
-            max-width: 100%;
-            height: auto;
-            cursor: pointer;
-        }
-
-        /* Nav container per desktop */
-        .nav-container {
-            display: flex;
-            position: absolute;
-            background: rgba(0, 0, 0, 0.95);
-            top: 0;
-            right: 0;
-            gap: 4rem;
-            padding: 1rem;
-            z-index: 1000;
-            display: flex;
-            justify-content: flex-end;
-            width: auto;
-        }
-
-        .nav-item {
-            color: white;
-            text-decoration: none;
-            margin-left: 2rem;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .nav-item:hover {
-            color: #b400fb;
-        }
-
-        .about-content {
-            max-width: 800px;
-            margin: 100px auto 220px auto;
-            padding: 20px;
-            line-height: 1.6;
-        }
-
-        .about-content h1 {
-            color: #b400fb;
-            font-family: abcdiatype-medium, sans-serif;
-            font-style: italic;
-            font-size: 2.5em;
-            margin-bottom: 30px;
-        }
-
-        .about-content p {
-            margin-bottom: 20px;
-            font-size: 16px;
-        }
-
-        .about-section {
-            margin-bottom: 40px;
-        }
-
-        .about-section h2 {
-            color: #b400fb;
-            margin-bottom: 20px;
-        }
-
-        #model-container {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            bottom: 100px;
-            background-color: black;
-            z-index: 100;
-            overflow: hidden;
-        }
-
-        #model-container canvas {
-            width: 100% !important;
-            height: 100% !important;
-        }
-
-        .image-box {
-            will-change: transform;
-            transform: translateZ(0);
-        }
-
-        /* Hamburger menu styles */
-        .hamburger-menu {
-            display: none;
-        }
-        
-        @media screen and (max-width: 768px) {
-            .hamburger-menu {
-                display: flex;
-                position: absolute;
-                top: 0;
-                right: 0;
-                z-index: 1001;
-                cursor: pointer;
-                background: none;
-                padding: 1rem;
-                width: 60px;
-            }
-            
-            .bars-container {
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
-                width: 25px;
-                margin: 0 auto;
-            }
-            
-            .bar {
-                width: 25px;
-                height: 3px;
-                background-color: white;
-                transition: 0.3s;
-            }
-            
-            .nav-container {
-                display: none;
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 250px;
-                height: 100vh;
-                background: #b400fb;
-                padding-top: 60px;
-                transition: 0.3s;
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .nav-container.active {
-                right: 0;
-                display: flex;
-            }
-
-            /* Hamburger animation */
-            .hamburger-menu.active .bar:first-child {
-                transform: rotate(-45deg) translate(-5px, 6px);
-            }
-
-            .hamburger-menu.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger-menu.active .bar:last-child {
-                transform: rotate(45deg) translate(-5px, -6px);
-            }
-        }
-
-        @media screen and (max-width: 780px) {
-            .nav-container {
-                width: 100%;
-                padding: 0;
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                background: #b400fb;
-                display: none;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-                gap: 2rem;
-            }
-            .nav-container.active {
-                display: flex;
-            }
-            .nav-container .nav-item {
-                color: white;
-                font-size: 2rem;
-                margin: 2rem;
-                text-align: center;
-                width: 100%;
-                
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            #model-container {
-                height: 200px;
-                margin-bottom: 20px;
-                transform: scale(0.8);
-            }
-
-            .about-content {
-                margin-top: 60px;
-                padding: 0 15px;
-                font-size: 0.7rem;
-            }
-            .artwork-container {
-                top: 0px;
-                left: 0;
-                z-index: 1000;
-                display: flex;
-                align-items: center;
-                margin-left: 0.5rem;
-                width: auto;
-            }
-
-            .artwork-container img {
-                width: 70px;
-                height: auto;
-            }
-        }
-
-
-        @media screen and (max-width: 400px) {
-            #model-container {
-                height: 180px;
-                margin-bottom: 20px;
-            }
-
-            #model-container canvas {
-                transform: scale(0.8);
-            }
-
-            .about-content {
-                margin-top: 18vh;
-                padding: 0 15px;
-                font-size: 0.7rem;
-            }
-
-            .nav-container {
-                gap: 1rem;
-                padding: 0.5rem;
-            }
-
-            .nav-item {
-                margin-left: 2rem;
-                
-            }
-        }
-
-        @media screen and (max-width: 780px) and (orientation: landscape) {
-            #model-container {
-                height: 180px;
-            }
-
-            #model-container canvas {
-                transform: scale(0.6);
-                transform-origin: center;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/about.css">
 </head>
 <body>
     <div class="hamburger-menu">
@@ -297,13 +17,18 @@
             <div class="bar"></div>
         </div>
     </div>
-    
+    <div class="nav-container">
+        <a href="about.html" class="nav-item">&#x21B3; ABOUT</a>
+        <a href="contact.html" class="nav-item">&#x21B3; CONTACT</a>
+        <a href="support.html" class="nav-item">&#x21B3; SUPPORT US</a>
+    </div>
     <nav class="nav-container">
         <a href="about.html" class="nav-item">&#x21B3; ABOUT</a>
         <a href="contact.html" class="nav-item">&#x21B3; CONTACT</a>
         <a href="support.html" class="nav-item">&#x21B3; SUPPORT US</a>
     </nav>
-    
+
+
     <div class="artwork-container">
         <a href="index.html">
             <img src="artworw-white.png" alt="Artwork Purple">
@@ -312,14 +37,16 @@
 
     <div class="about-content">
         <h1>Pick Up The Cake</h1>
-        
+
         <div class="about-section">
             <h2>About Us</h2>
             <p>Pick Up The Cake is a music label founded by mvrgn and Arsider Cam. It has no defined aesthetic, 
                 we release what we can, when we can but, most of all, what we really like.</p>
+            <p>Pick Up The Cake is a music label founded by mvrgn and Arsider Cam. It has no defined aesthetic,
+                we release what we can, when we can but, most of all, what we really like.</p>
         </div>
 
-        
+
 
         <div class="about-section">
             <h2>Demo Policy</h2>
@@ -331,113 +58,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-    <script>
-        let scene = new THREE.Scene();
-        let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        let renderer = new THREE.WebGLRenderer({ antialias: true });
-        let container = document.getElementById('model-container');
-        
-        // Imposta le dimensioni iniziali
-        const width = container.clientWidth;
-        const height = container.clientHeight;
-        renderer.setSize(width, height);
-        camera.aspect = width / height;
-        camera.updateProjectionMatrix();
-        
-        container.appendChild(renderer.domElement);
-
-        // Aggiungi luce
-        const light = new THREE.AmbientLight(0xffffff, 0.7); 
-        scene.add(light);
-
-        // Aggiungi luce direzionale
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.3); 
-        directionalLight.position.set(5, 5, 5);
-        scene.add(directionalLight);
-
-        const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.3); 
-        directionalLight2.position.set(-5, -5, -5);
-        scene.add(directionalLight2);
-
-        // Posiziona la camera
-        camera.position.z = 95;
-
-        // Carica il modello
-        const loader = new THREE.GLTFLoader();
-        let model;
-        
-        loader.load(
-            '3d/ImageToStl.com_nosfondo.glb',
-            function (gltf) {
-                model = gltf.scene;
-                
-                // Applica il materiale con riflessi viola
-                model.traverse((child) => {
-                    if (child.isMesh) {
-                        const originalColor = child.material.color;
-                        child.material = new THREE.MeshPhongMaterial({
-                            color: originalColor,  // Usa il colore originale
-                            specular: 0xb400fb,  // Mantiene i riflessi viola
-                            shininess: 150,
-                            emissive: 0x000000
-                        });
-                    }
-                });
-                
-                scene.add(model);
-                
-                // Ruota il modello in posizione verticale
-                model.rotation.x = 0; // Rimuoviamo la rotazione iniziale
-                
-                // Scala il modello
-                model.scale.set(1, 0.3, 1);
-                
-                // Centra il modello
-                const box = new THREE.Box3().setFromObject(model);
-                const center = box.getCenter(new THREE.Vector3());
-                model.position.sub(center);
-            },
-            undefined,
-            function (error) {
-                console.error(error);
-            }
-        );
-
-        // Animazione
-        function animate() {
-            requestAnimationFrame(animate);
-            if (model) {
-                model.rotation.x += 0.007; 
-                model.rotation.y += 0.009; // Aggiunta rotazione Y leggermente più lenta
-            }
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        // Responsive
-        let initialScale = { x: 1, y: 0.3, z: 1 }; // Memorizza la scala iniziale con i valori esatti
-        window.addEventListener('resize', function() {
-            const width = container.clientWidth;
-            const height = container.clientHeight;
-            
-            camera.aspect = width / height;
-            camera.updateProjectionMatrix();
-            
-            renderer.setSize(width, height, false);
-            
-            // Mantieni la scala del modello
-            if (model) {
-                model.scale.set(initialScale.x, initialScale.y, initialScale.z);
-            }
-        });
-        
-        // Aggiungi evento di click al menu hamburger
-        const hamburgerMenu = document.querySelector('.hamburger-menu');
-        const navContainer = document.querySelector('.nav-container');
-        
-        hamburgerMenu.addEventListener('click', function() {
-            navContainer.classList.toggle('active');
-        });
-    </script>
+   
+    <script src="js/about.js"></script>
+   
 </body>
+
 </html>
