@@ -588,3 +588,30 @@ body {
         padding-bottom: 20px;
     }
 }
+
+.link-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    background-color: #000000;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.link-container a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: abcdiatype-medium, Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+}
+
+.link-container a:hover {
+    color: #7d15cd;
+    text-decoration: underline;
+}
