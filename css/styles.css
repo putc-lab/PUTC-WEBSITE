@@ -25,7 +25,7 @@
        background: rgba(0, 0, 0, 0.95);
        top: 0;
        right: 0;
-       gap: 4rem;
+       gap: 1rem;
        padding: 1rem;
        z-index: 1000;
        display: flex;
@@ -39,7 +39,7 @@
        font-family: ABCDiatype-Medium, sans-serif;
        font-weight: bold;
        margin-left: 2rem;
-       font-size: 1rem;
+       font-size: 0.9rem;
        transition: color 0.3s ease;
    }
 
@@ -200,9 +200,8 @@
        position: fixed;
        justify-content: center;
        align-items: center;
-       width: 120px;
+       width: 90px;
        height: auto;
-
        top: 0;
        left: 0;
        margin-left: 0.5rem;
@@ -218,16 +217,17 @@
    .images-container {
        display: flex;
        justify-content: center;
-       gap: 0;
+       gap: 40px;
        position: absolute;
        top: 50%;
        left: 50%;
        transform: translate(-50%, -50%);
-       margin-top: 50px;
+       margin-top: 0px;
    }
 
    .image-box {
        position: relative;
+        display: inline-block;
        border: solid 1px #cccccc;
        margin: 0;
        padding: 0;
@@ -236,12 +236,19 @@
    }
 
    .image-box video {
-       width: 350px;
+       width: 300px;
        height: auto;
        cursor: pointer;
        display: block;
    }
 
+   .image-box2 img {
+       width: 300px;
+       height: auto;
+       display: block;
+       cursor: pointer;
+   }
+ 
    /* Bottom Player Styles */
    .bottom-player {
        position: fixed;

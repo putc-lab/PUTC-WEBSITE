@@ -718,3 +718,33 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
   
+// Miglioro la transizione di nav-container e artwork-container: scompaiono in modo fluido e riappaiono solo in cima
+(function() {
+    const nav = document.querySelector('.nav-container');
+    const artwork = document.querySelector('.artwork-container');
+    if (nav) nav.style.transition = 'opacity 0.5s';
+    if (artwork) artwork.style.transition = 'opacity 0.5s';
+    window.addEventListener('scroll', function() {
+        let st = window.pageYOffset || document.documentElement.scrollTop;
+        if (st > 0) {
+            if (nav) {
+                nav.style.opacity = '0';
+                nav.style.pointerEvents = 'none';
+            }
+            if (artwork) {
+                artwork.style.opacity = '0';
+                artwork.style.pointerEvents = 'none';
+            }
+        } else {
+            if (nav) {
+                nav.style.opacity = '1';
+                nav.style.pointerEvents = '';
+            }
+            if (artwork) {
+                artwork.style.opacity = '1';
+                artwork.style.pointerEvents = '';
+            }
+        }
+    }, false);
+})();
+  

@@ -26,7 +26,7 @@
       position: absolute;
       justify-content: center;
       align-items: center;
-      width: 100px;
+      width: 90px;
       height: auto;
       position: absolute;
       top: 0;
@@ -42,12 +42,11 @@
 
   /* Nav container per desktop */
   .nav-container {
-      display: flex;
-      position: absolute;
+      position: fixed;
       background: rgba(0, 0, 0, 0.95);
       top: 0;
       right: 0;
-      gap: 4rem;
+      gap: 1rem;
       padding: 1rem;
       z-index: 1000;
       display: flex;
@@ -58,12 +57,12 @@
   .nav-item {
       color: white;
       text-decoration: none;
-      margin-left: 2rem;
-      font-size: 1rem;
+      font-family: ABCDiatype-Medium, sans-serif;
       font-weight: bold;
+      margin-left: 2rem;
+      font-size: 0.9rem;
       transition: color 0.3s ease;
   }
-
   .nav-item:hover {
       color: #b400fb;
   }
