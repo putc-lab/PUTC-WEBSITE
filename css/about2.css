@@ -1,0 +1,174 @@
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #1a1a1a; }
+::-webkit-scrollbar-thumb { background: #be3bff; border-radius: 2px; }
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #000;
+    font-family: abcdiatype-medium, sans-serif;
+}
+
+/* ── Page wrapper ── */
+.about-page {
+    max-width: 1200px;
+    margin: 70px auto 80px auto;
+}
+
+/* ── Header ── */
+.about-header {
+    display: none;
+    padding: 1px 40px 20px 40px;
+    border-bottom: 1px solid #b400fb;
+    text-align: left;
+}
+
+.about-header h1 {
+    font-family: abcdiatype-medium, sans-serif;
+    font-style: italic;
+    font-size: 2.5em;
+    font-weight: bold;
+    margin: 0;
+    color: #000;
+}
+#about .row-label { display: none; }
+
+/* ── Labels ── */
+.row-label {
+    display: block;
+    font-size: 0.85rem;
+    font-style: italic;
+    letter-spacing: 2px;
+    color: #999;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.row-sublabel {
+    display: block;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    font-style: italic;
+    color: #999;
+    text-transform: uppercase;
+    margin-top: 30px;
+    margin-bottom: 12px;
+}
+
+/* ── Full width row ── */
+.about-row.full {
+    border-bottom: 1px solid #b400fb;
+}
+
+.about-row-inner {
+    padding: 20px 40px;
+}
+
+.about-row-inner p {
+    font-size: 2rem;
+    font-family: ABCDiatype-Medium, calserif;
+    line-height: 1;
+    text-align: center;
+    color: #000;
+    
+}
+
+/* ── Split row 50/50 ── */
+.about-row.split {
+    display: flex;
+    border-bottom: 1px solid #b400fb;
+}
+
+.split-col {
+    flex: 0 0 50%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.split-col.left {
+    border-right: 1px solid #b400fb;
+}
+.split-col.right a {
+    color: #545454;
+    font-size: 1.1rem;
+    text-align: center;
+    display: block;
+    margin-top: 12px;
+}
+.split-col.right .row-label {
+    text-align: center;
+}
+
+.split-col p {
+    font-size: 2rem;
+    line-height: 1.2;
+    color: #000;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.split-col a {
+    color: #000;
+    text-decoration: none;
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+    transition: color 0.2s;
+}
+
+.split-col a:hover { color: #b400fb; }
+
+#support {
+    text-align: center;
+    border-bottom: none;
+}
+
+/* ── 3D model ── */
+#model-container {
+    width: 100%;
+    height: 100px;
+    margin: 30px auto 0 auto;
+    background: transparent;
+    overflow: visible;
+}
+
+#model-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+    background: transparent !important;
+}
+
+/* ══════════════════════════════
+   MEDIA QUERIES
+══════════════════════════════ */
+
+@media screen and (max-width: 1200px) {
+    .about-page { margin: 70px 20px 80px; }
+}
+
+@media screen and (max-width: 1024px) and (orientation: portrait) {
+    .about-page { margin: 70px 0 80px; border-left: none; border-right: none; }
+    .about-header { padding: 40px 20px 30px; }
+    .about-header h1 { font-size: 2em; }
+    .about-row-inner { padding: 30px 20px; }
+    
+
+    .about-row.split { flex-direction: column; }
+    .split-col { flex: none; width: 100%; padding: 30px 20px; }
+    .split-col.left { border-right: none; border-bottom: 1px solid #b400fb; }
+}
+
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+    .about-page { margin: 60px 0 80px; }
+    .about-header { padding: 30px 20px; }
+    .about-header h1 { font-size: 1.8em; }
+    .about-row-inner { padding: 20px; }
+    .split-col { padding: 20px; }
+}
+
+@media screen and (max-width: 400px) {
+    .about-header h1 { font-size: 1.6em; }
+}

@@ -3,45 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" sizes="32x32" href="artworw-purp.png">
+    <link rel="icon" sizes="32x32" href="artworw-purp.webp">
     <title>Pick Up The Cake</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
     <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
-    <div class="hamburger-menu">
-        <div class="bars-container">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+
+    <nav class="navbar-main">
+        <div class="navbar-left">
+            <a href="index.html"><img src="symbol.webp" width="50" height="50" alt="Symbol"></a>
+        </div>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="navbar-right" id="navbar-right">
+            <a href="releases.html" class="nav-item">RELEASES</a>
+            <a href="residency.html" class="nav-item">RESIDENCY</a>
+            <a href="about2.html#about" class="nav-item">ABOUT</a>
+            <a href="about2.html#contact" class="nav-item">CONTACT</a>
+            <a href="about2.html#support" class="nav-item">SUPPORT US</a>
+        </div>
+    </nav>
+
+    <!-- Desktop -->
+    <div class="images-container">
+       
+        <div class="image-box2">
+            <a href="release02.html">
+                <img src="ARWORK/Espedienti.webp" width="300" height="300" alt="Espedienti">
+            </a>
+        </div>
+        <div class="image-box01">
+            <a href="release01.html">
+                <img src="ARWORK/sofacoveer2.webp" width="300" height="300" alt="Live In Italy">
+            </a>
         </div>
     </div>
-    <div class="nav-container">
-        <a href="about.html" class="nav-item">&#x21B3; ABOUT</a>
-        <a href="contact.html" class="nav-item">&#x21B3; CONTACT</a>
-        <a href="support.html" class="nav-item">&#x21B3; SUPPORT US</a>
-    </div>
-    <div class="splash-screen">
-        <div class="splash-text">Pick Up The Cake</div>
-    </div>
-    <div class="artwork-container">
-        <a href="index.html">
-            <img src="artworw-white.png" alt="Artwork Purple">
-        </a>
-    </div>
-    <div class="images-container">
-       <div class="image-box2">
-        <a href="album2.html">
-            <img src="ARWORK/Espedienti.jpeg" alt="Espedienti">
-        </a>
-    </div>
-    <div class="image-box">
-        <a href="album.html">
-            <video id="myVideo" src="ARWORK/sofacovermove.mp4" alt="Artwork Default" autoplay loop muted
-                playsinline></video>
-        </a>
-    </div>
+
+    <!-- Mobile snap scroll -->
+    <div class="mobile-snap-container">
+        <div class="snap-slide">
+            <a href="album3.html">
+                <img src="ARWORK/kabritoArt.webp" alt="L'uomo corteccia">
+            </a>
+            <div class="scroll-hint">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+        <div class="snap-slide">
+            <a href="album2.html">
+                <img src="ARWORK/Espedienti.webp" alt="Espedienti">
+            </a>
+            <div class="scroll-hint">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+        <div class="snap-slide">
+            <a href="album.html">
+                <img src="ARWORK/sofacoveer2.webp" alt="Live In Italy">
+            </a>
+        </div>
     </div>
 
     <div class="bottom-player">
@@ -67,7 +90,7 @@
                 <div class="song-info">
                     <div class="title-row">
                         <span class="song-title" id="bottom-song-title">Select a song</span>
-                        <span class="artist-name">Jaz Jizz Trio</span>
+                        <span class="artist-name" id="bottom-artist-name"></span>
                     </div>
                     <div class="time-row">
                         <span id="bottom-current-time">0:00</span>
@@ -83,23 +106,20 @@
             </div>
             <div class="volume-container">
                 <i class="fas fa-volume-up" onclick="toggleMute('bottom')"></i>
-                <input type="range" id="bottom-volume" min="0" max="1" step="0.1" value="1" 
-                       oninput="setVolume('bottom', this.value)">
+                <input type="range" id="bottom-volume" min="0" max="1" step="0.1" value="1" oninput="setVolume('bottom', this.value)">
             </div>
         </div>
     </div>
 
     <audio id="bottomAudio" onended="songEnded('bottom')" ontimeupdate="updateProgress('bottom')"></audio>
 
-    
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tone@14.7.77/build/Tone.min.js"></script>
-    <script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script src="js/scripts.js"></script>
-
-
-  
+    <script>
+        function toggleMenu() {
+            document.getElementById('hamburger').classList.toggle('active');
+            document.getElementById('navbar-right').classList.toggle('active');
+        }
+    </script>
 
 </body>
 </html>

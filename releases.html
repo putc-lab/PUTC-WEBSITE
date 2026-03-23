@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pick Up The Cake — Releases</title>
+    <link rel="icon" sizes="32x32" href="artworw-purp.webp">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/releases.css">
+</head>
+<body>
+
+    <nav class="navbar-main">
+        <div class="navbar-left">
+            <a href="index.html"><img src="symbol.webp" width="50" height="50" alt="Symbol"></a>
+        </div>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="navbar-right" id="navbar-right">
+            <a href="releases.html" class="nav-item">RELEASES</a>
+            <a href="residency.html" class="nav-item">RESIDENCY</a>
+            <a href="about2.html#about" class="nav-item">ABOUT</a>
+            <a href="about2.html#contact" class="nav-item">CONTACT</a>
+            <a href="about2.html#support" class="nav-item">SUPPORT US</a>
+        </div>
+    </nav>
+
+    <main class="releases-page">
+        <table class="releases-table">
+            <thead>
+                <tr>
+                    <th>Cat #</th>
+                    <th>Artist</th>
+                    <th>Title</th>
+                    <th>Format</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+               
+                <tr onclick="window.location='release02.html'">
+                    <td>PUTC #002</td>
+                    <td>Robert Bishop, lillilillililli, Carro</td>
+                    <td>Espedienti</td>
+                    <td>DL / TAPE</td>
+                    <td>2025</td>
+                </tr>
+                <tr onclick="window.location='release01.html'">
+                    <td>PUTC #001</td>
+                    <td>Jan Jizz Trio</td>
+                    <td>Live In Italy</td>
+                    <td>DL</td>
+                    <td>2024</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('hamburger').classList.toggle('active');
+            document.getElementById('navbar-right').classList.toggle('active');
+        }
+        const navbar = document.querySelector('.navbar-main');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('hidden', window.scrollY > 10);
+        });
+    </script>
+
+</body>
+</html>

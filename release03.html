@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kabiro - L'uomo Corteccia</title>
+    <link rel="icon" sizes="32x32" href="artworw-purp.webp">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/album.css">
+</head>
+<body>
+
+    <nav class="navbar-main">
+        <div class="navbar-left">
+            <a href="index.html"><img src="symbol.webp" width="50" height="50" alt="Symbol"></a>
+        </div>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="navbar-right" id="navbar-right">
+            <a href="releases.html" class="nav-item">RELEASES</a>
+            <a href="residency.html" class="nav-item">RESIDENCY</a>
+            <a href="about2.html#about" class="nav-item">ABOUT</a>
+            <a href="about2.html#contact" class="nav-item">CONTACT</a>
+            <a href="about2.html#support" class="nav-item">SUPPORT US</a>
+        </div>
+    </nav>
+
+    <div class="album-content">
+        <div class="album-artwork">
+            <img src="ARWORK/HQ/hqkabritoArt.webp" alt="Kabiro Album" onclick="showImage(this.src)">
+            <div class="artwork-credit">Artwork by <strong>Silvia Basano</strong></div>
+        </div>
+        <div class="album-info">
+            <h1>KABIRO<span class="catalog-number">PUTC #003</span></h1>
+            <h2>L'UOMO CORTECCIA</h2>
+            <div class="tracklist-paginated">
+                <ul class="track-list" id="track-list"></ul>
+                <a class="buy-btn" href="https://pickupthecake.bandcamp.com/album/luomo-corteccia" target="_blank">BUY / DOWNLOAD</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="album-bottom-info">
+        <div class="album-description">
+            L'uomo corteccia is Kabiro's debut on Pick Up The Cake. A collection of sound works that navigate
+            the space between experimental electronics and organic textures — field recordings, processed voices,
+            and synthesized matter coexist in a fragile equilibrium. Each track is a micro-world, self-contained
+            yet part of a larger cartography of listening.
+        </div>
+        <div class="bio-credits">
+            <p>Giustino Kabiro is a Cortex-Cracker operator, performer and outer-sound dimension researcher. After the seminal
+            electro/spoken/punk aggression of his duo Compulsive Pene Madonna, he has navigated a prolific solo path defined by
+            visceral live performances and a series of the most diverse releases. His practice is a rustic cypher in which noise
+            abruptions and calm vast scapes are interconnected as a language spoken by a machinic else.</p>
+        </div>
+        <div class="album-credits">
+            <div class="credit-item"><span class="credit-label">Release Date:</span><span>March 25, 2026</span></div>
+            <div class="credit-item"><span class="credit-label">Music Composed by:</span><span>Kabiro</span></div>
+            <div class="credit-item"><span class="credit-label">Mastering by:</span><span>mvrgn</span></div>
+            <div class="credit-item"><span class="credit-label">Graphic Design by:</span><span>Silvia Basano</span></div>
+        </div>
+    </div>
+
+    <div class="overlay" id="imageOverlay" onclick="hideImage()">
+        <img id="overlayImage" src="" alt="Ingrandimento">
+    </div>
+
+    <div class="bottom-player">
+        <div class="custom-player">
+            <div class="controls">
+                <div class="control-container"><div class="control-button" onclick="previousSong('bottom')"><i class="fas fa-step-backward"></i></div></div>
+                <div class="control-container"><div class="control-button" onclick="togglePlay('bottom')"><i class="fas fa-play" id="bottom-play-pause"></i></div></div>
+                <div class="control-container"><div class="control-button" onclick="nextSong('bottom')"><i class="fas fa-step-forward"></i></div></div>
+            </div>
+            <div class="track-info">
+                <div class="song-info">
+                    <div class="title-row">
+                        <span class="song-title" id="bottom-song-title">Select a song</span>
+                        <span class="artist-name">Kabiro</span>
+                    </div>
+                    <div class="time-row">
+                        <span id="bottom-current-time">0:00</span><span>/</span><span id="bottom-duration">0:00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="bottom-progress-bar" onclick="seek(event, 'bottom')">
+                    <div class="progress" id="bottom-progress"></div>
+                </div>
+            </div>
+            <div class="volume-container">
+                <i class="fas fa-volume-up" onclick="toggleMute('bottom')"></i>
+                <input type="range" id="bottom-volume" min="0" max="1" step="0.1" value="1" oninput="setVolume('bottom', this.value)">
+            </div>
+        </div>
+    </div>
+    <audio id="bottomAudio" onended="songEnded('bottom')" ontimeupdate="updateProgress('bottom')"></audio>
+
+    <script>
+        const albumPlaylist = [
+            { src: 'ALBUM/KABIRO/03 - Kabiro - 4. sidrax divinorum-001.wav', title: 'Sidrax' },
+            { src: 'ALBUM/KABIRO/07 - Kabiro - 1.brutto.wav', title: 'Brutto' },
+            { src: 'ALBUM/KABIRO/02 - Kabiro - 3. esporre-imporre-pocoriverbero.wav', title: 'Esporre/Imporre' },
+            { src: 'ALBUM/KABIRO/01 - Kabiro - 2.armonici_delay.wav', title: 'Armonici delay' },
+            { src: 'ALBUM/KABIRO/04 - Kabiro - 5. chef bananas-001.wav', title: 'Chef bananas' },
+            { src: 'ALBUM/KABIRO/05 - Kabiro - 6. organo-modale.wav', title: 'Organo modale' },
+            { src: 'ALBUM/KABIRO/06 - Kabiro - o_mio_mia_gran.wav', title: 'O mio mia gran' },
+            { src: 'ALBUM/KABIRO/08 - Kabiro - 8. Live.wav', title: 'Live at Afekt festival w/Roya Naini' }
+        ];
+    </script>
+    <script src="js/player.js"></script>
+    <script>
+        function toggleMenu() {
+            document.getElementById('hamburger').classList.toggle('active');
+            document.getElementById('navbar-right').classList.toggle('active');
+        }
+        const navbar = document.querySelector('.navbar-main');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('hidden', window.scrollY > 10);
+        });
+    </script>
+
+</body>
+</html>

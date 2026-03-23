@@ -1,106 +1,85 @@
- let scene = new THREE.Scene();
-        let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        let renderer = new THREE.WebGLRenderer({ antialias: true });
-        let container = document.getElementById('model-container');
+const container = document.getElementById('model-container');
 
-        // Imposta le dimensioni iniziali
-        const width = container.clientWidth;
-        const height = container.clientHeight;
-        renderer.setSize(width, height);
-        camera.aspect = width / height;
-        camera.updateProjectionMatrix();
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
 
-        container.appendChild(renderer.domElement);
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setClearColor(0x000000, 0);
+renderer.setSize(container.clientWidth, container.clientHeight);
+container.appendChild(renderer.domElement);
 
-        // Aggiungi luce
-        const light = new THREE.AmbientLight(0xffffff, 0.7);
-        scene.add(light);
+camera.position.z = 150;
 
-        // Aggiungi luce direzionale
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.3);
-        directionalLight.position.set(5, 5, 5);
-        scene.add(directionalLight);
+// Luci
+scene.add(new THREE.AmbientLight(0xffffff, 0.8));
 
-        const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.3);
-        directionalLight2.position.set(-5, -5, -5);
-        scene.add(directionalLight2);
+const dirLight1 = new THREE.DirectionalLight(0xffffff, 0.4);
+dirLight1.position.set(5, 5, 5);
+scene.add(dirLight1);
 
-        // Posiziona la camera
-        camera.position.z = 95;
+const dirLight2 = new THREE.DirectionalLight(0xffffff, 0.3);
+dirLight2.position.set(-5, -5, -5);
+scene.add(dirLight2);
 
-        // Carica il modello
-        const loader = new THREE.GLTFLoader();
-        let model;
+// Pivot group — ruota come una moneta
+const pivot = new THREE.Group();
+scene.add(pivot);
 
-        loader.load(
-            '3d/ImageToStl.com_nosfondo.glb',
-            function (gltf) {
-                model = gltf.scene;
+// Carica modello
+const loader = new THREE.GLTFLoader();
+let model;
 
-                // Applica il materiale con riflessi viola
-                model.traverse((child) => {
-                    if (child.isMesh) {
-                        const originalColor = child.material.color;
-                        child.material = new THREE.MeshPhongMaterial({
-                            color: originalColor,  // Usa il colore originale
-                            specular: 0xb400fb,  // Mantiene i riflessi viola
-                            shininess: 150,
-                            emissive: 0x000000
-                        });
-                    }
+loader.load(
+    '3d/ImageToStl.com_nosfondo.glb',
+    function (gltf) {
+        model = gltf.scene;
+
+        model.traverse((child) => {
+            if (child.isMesh) {
+                child.material = new THREE.MeshPhongMaterial({
+                    color: child.material.color,
+                    specular: 0xb400fb,
+                    shininess: 150,
+                    emissive: 0x000000
                 });
-
-                scene.add(model);
-
-                // Ruota il modello in posizione verticale
-                model.rotation.x = 0; // Rimuoviamo la rotazione iniziale
-
-                // Scala il modello
-                model.scale.set(1, 0.3, 1);
-
-                // Centra il modello
-                const box = new THREE.Box3().setFromObject(model);
-                const center = box.getCenter(new THREE.Vector3());
-                model.position.sub(center);
-            },
-            undefined,
-            function (error) {
-                console.error(error);
-            }
-        );
-
-        // Animazione
-        function animate() {
-            requestAnimationFrame(animate);
-            if (model) {
-                model.rotation.x += 0.007;
-                model.rotation.y += 0.009; // Aggiunta rotazione Y leggermente più lenta
-            }
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        // Responsive
-        let initialScale = { x: 1, y: 0.3, z: 1 }; // Memorizza la scala iniziale con i valori esatti
-        window.addEventListener('resize', function () {
-            const width = container.clientWidth;
-            const height = container.clientHeight;
-
-            camera.aspect = width / height;
-            camera.updateProjectionMatrix();
-
-            renderer.setSize(width, height, false);
-
-            // Mantieni la scala del modello
-            if (model) {
-                model.scale.set(initialScale.x, initialScale.y, initialScale.z);
             }
         });
 
-        // Aggiungi evento di click al menu hamburger
-        const hamburgerMenu = document.querySelector('.hamburger-menu');
-        const navContainer = document.querySelector('.nav-container');
+        // Centra il modello
+        const box = new THREE.Box3().setFromObject(model);
+        const center = box.getCenter(new THREE.Vector3());
+        model.position.sub(center);
 
-        hamburgerMenu.addEventListener('click', function () {
-            navContainer.classList.toggle('active');
-        });
+        // Metti in piedi il modello dentro il pivot
+        model.rotation.x = Math.PI / 2;
+
+        // Scala
+        const size = new THREE.Vector3();
+        box.getSize(size);
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const scale = 140 / maxDim;
+        model.scale.set(scale, scale, scale);
+
+        // Aggiungi al pivot, non alla scena
+        pivot.add(model);
+    },
+    undefined,
+    (error) => console.error('Errore caricamento modello:', error)
+);
+
+// Animazione — ruota il pivot su Y come una moneta
+function animate() {
+    requestAnimationFrame(animate);
+    pivot.rotation.y += 0.03;
+    renderer.render(scene, camera);
+}
+animate();
+
+// Responsive
+window.addEventListener('resize', () => {
+    const w = container.clientWidth;
+    const h = container.clientHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h, false);
+});

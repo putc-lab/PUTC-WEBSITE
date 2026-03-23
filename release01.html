@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jan Jizz Trio - Live In Italy</title>
+    <link rel="icon" sizes="32x32" href="artworw-purp.webp">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/album.css">
+</head>
+<body>
+
+    <nav class="navbar-main">
+        <div class="navbar-left">
+            <a href="index.html"><img src="symbol.webp" width="50" height="50" alt="Symbol"></a>
+        </div>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="navbar-right" id="navbar-right">
+            <a href="releases.html" class="nav-item">RELEASES</a>
+            <a href="residency.html" class="nav-item">RESIDENCY</a>
+            <a href="about2.html#about" class="nav-item">ABOUT</a>
+            <a href="about2.html#contact" class="nav-item">CONTACT</a>
+            <a href="about2.html#support" class="nav-item">SUPPORT US</a>
+        </div>
+    </nav>
+
+    <div class="album-content">
+        <div class="album-artwork">
+            <img src="ARWORK/HQ/hqliveinitaly.webp" alt="Jan Jizz Trio Album" onclick="showImage(this.src)">
+            <div class="artwork-credit">Artwork by <strong>Silvia Basano</strong></div>
+        </div>
+        <div class="album-info">
+            <h1>Jan Jizz Trio<span class="catalog-number">PUTC #001</span></h1>
+            <h2>Live In Italy</h2>
+            <div class="tracklist-paginated">
+                <ul class="track-list" id="track-list"></ul>
+                <a class="buy-btn" href="https://pickupthecake.bandcamp.com/album/live-in-italy" target="_blank">BUY / DOWNLOAD</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="album-bottom-info">
+        <div class="album-description">
+            Live In Italy is a new outcome by the Jan Jizz Trio. Through the MIDI protocol, a powerful language of
+            mediation, ephemeral trajectories are drawn between ambient and contemporary electronics, embarking the
+            listeners on new paths overlooking landscapes that oscillating from warmth of melody and the numerical
+            programming. Dissonances emerge as memory units, fading like smoke in the span of a clock's ticking.
+            Here, musicians neither dominate the machine nor is dominated by it. They simply create instant
+            compositions into a suspended territory, where electronics take on corporeal form, a resonant
+            antechamber of worlds where humans and machines engage in porous, highly fluid relationships.
+        </div>
+        <div class="bio-credits">
+            <p>Jan Jizz is Danish composer from Veksø. Drawing from his roots in a family of Methodist gabba
+            enthusiasts and inspired by his mentor Mats Söderlund, Jizz merges tradition and experimentation,
+            redefining contemporary jazz limits through innovative use of technology. This is his first trio album,
+            recorded and produced entirely live in the studio. It marks his debut with Pick Up the Cake.</p>
+        </div>
+        <div class="album-credits">
+            <div class="credit-item"><span class="credit-label">Release Date:</span><span>January 8, 2024</span></div>
+            <div class="credit-item"><span class="credit-label">Jan Jazz trio are:</span><span>Jan Jazz - Computers<br>Luca Mezzano - Digital Winds<br>Antonino Asta - Drum Machine</span></div>
+            <div class="credit-item"><span class="credit-label">Music Composed by:</span><span>Jan Jizz Trio</span></div>
+            <div class="credit-item"><span class="credit-label">Vocal sampling:</span><span>Jason La Mecca</span></div>
+            <div class="credit-item"><span class="credit-label">Graphic Design by:</span><span>Silvia Basano</span></div>
+            <div class="credit-item"><span class="credit-label">Produced and Mastered by:</span><span>mvrgn</span></div>
+        </div>
+    </div>
+
+    <div class="overlay" id="imageOverlay" onclick="hideImage()">
+        <img id="overlayImage" src="" alt="Ingrandimento">
+    </div>
+
+    <div class="bottom-player">
+        <div class="custom-player">
+            <div class="controls">
+                <div class="control-container"><div class="control-button" onclick="previousSong('bottom')"><i class="fas fa-step-backward"></i></div></div>
+                <div class="control-container"><div class="control-button" onclick="togglePlay('bottom')"><i class="fas fa-play" id="bottom-play-pause"></i></div></div>
+                <div class="control-container"><div class="control-button" onclick="nextSong('bottom')"><i class="fas fa-step-forward"></i></div></div>
+            </div>
+            <div class="track-info">
+                <div class="song-info">
+                    <div class="title-row">
+                        <span class="song-title" id="bottom-song-title">Select a song</span>
+                        <span class="artist-name">Jan Jizz Trio</span>
+                    </div>
+                    <div class="time-row">
+                        <span id="bottom-current-time">0:00</span><span>/</span><span id="bottom-duration">0:00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="bottom-progress-bar" onclick="seek(event, 'bottom')">
+                    <div class="progress" id="bottom-progress"></div>
+                </div>
+            </div>
+            <div class="volume-container">
+                <i class="fas fa-volume-up" onclick="toggleMute('bottom')"></i>
+                <input type="range" id="bottom-volume" min="0" max="1" step="0.1" value="1" oninput="setVolume('bottom', this.value)">
+            </div>
+        </div>
+    </div>
+    <audio id="bottomAudio" onended="songEnded('bottom')" ontimeupdate="updateProgress('bottom')"></audio>
+
+    <script>
+        const albumPlaylist = [
+            { src: 'ALBUM/Jaz Jizz Trio_Master/1_FAI_Master.wav', title: 'Non è la FAI' },
+            { src: 'ALBUM/Jaz Jizz Trio_Master/2. Derek_Master.wav', title: 'Arrosticini alla Derek' },
+            { src: 'ALBUM/Jaz Jizz Trio_Master/3. Le solite beghe. w:Marcello Rotondella_master.wav', title: 'Le solite beghe' },
+            { src: 'ALBUM/Jaz Jizz Trio_Master/4. Mai Usato_Master.wav', title: 'Mai Usato il Modulare' },
+            { src: 'ALBUM/Jaz Jizz Trio_Master/5. Surgelati_Master.wav', title: 'Surgelati in sconto' },
+            { src: 'ALBUM/Jaz Jizz Trio_Master/6. un Inverno_Master.wav', title: 'Un Inverno a Romagnano Sesia' },
+            { src: 'ALBUM/Jaz Jizz Trio_Master/7. Valle Di Lanzo_Master.wav', title: 'Valli Di Lanzo' }
+        ];
+    </script>
+    <script src="js/player.js"></script>
+    <script>
+        function toggleMenu() {
+            document.getElementById('hamburger').classList.toggle('active');
+            document.getElementById('navbar-right').classList.toggle('active');
+        }
+        const navbar = document.querySelector('.navbar-main');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('hidden', window.scrollY > 10);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robert Bishop, Lilli, Carro - Espedienti</title>
+    <link rel="icon" sizes="32x32" href="artworw-purp.webp">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/album.css">
+</head>
+<body>
+    <div id="custom-cursor"></div>
+
+    <nav class="navbar-main">
+        <div class="navbar-left">
+            <a href="index.html"><img src="symbol.webp" width="50" height="50" alt="Symbol"></a>
+        </div>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="navbar-right" id="navbar-right">
+            <a href="releases.html" class="nav-item">RELEASES</a>
+            <a href="residency.html" class="nav-item">RESIDENCY</a>
+            <a href="about2.html#about" class="nav-item">ABOUT</a>
+            <a href="about2.html#contact" class="nav-item">CONTACT</a>
+            <a href="about2.html#support" class="nav-item">SUPPORT US</a>
+        </div>
+    </nav>
+
+    <div class="album-content">
+        <div class="album-artwork">
+            <div class="slideshow-container">
+                <div class="mySlides fade" style="display: block;">
+                    <img src="ARWORK/HQ/Espedienti.webp" alt="Espedienti Album" onclick="handleSlideClick(event, this)">
+                </div>
+                <div class="mySlides fade">
+                    <img src="ARWORK/espedientitape/1.webp" alt="Espedienti tape 1" onclick="handleSlideClick(event, this)">
+                </div>
+                <div class="mySlides fade">
+                    <img src="ARWORK/espedientitape/2.webp" alt="Espedienti tape 2" onclick="handleSlideClick(event, this)">
+                </div>
+                <div class="mySlides fade">
+                    <img src="ARWORK/espedientitape/3.webp" alt="Espedienti tape 3" onclick="handleSlideClick(event, this)">
+                </div>
+                <div class="dot-container">
+                    <span class="dot active" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                </div>
+            </div>
+            <div class="artwork-credit">Artwork by <strong>Silvia Basano</strong></div>
+        </div>
+        <div class="album-info">
+            <h1>Robert Bishop, lillilillililli, Carro<span class="catalog-number">PUTC #002</span></h1>
+            <h2>Espedienti</h2>
+            <div class="tracklist-paginated">
+                <ul class="track-list" id="track-list"></ul>
+                <div class="pagination">
+                    <button class="page-btn" id="prev-page" onclick="changePage(-1)"><i class="fas fa-chevron-left"></i></button>
+                    <button class="page-btn" id="next-page" onclick="changePage(1)"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <a class="buy-btn" href="https://pickupthecake.bandcamp.com/album/espedienti" target="_blank">BUY / DOWNLOAD</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="album-bottom-info">
+        <div class="album-description">
+            Espedienti is an informal quadraphony without preconditions.
+            Four uninfluenced, rarefied chapters: do not correct. Do not refine. Do not beautify.
+
+            Fiabe del fiume burns as slow-motion drift stuck in memory —
+            sluggish loops, deflated synths, drunk guitars recorded at dawn,
+            with the window open to the traffic outside.
+
+            Liquida lingua is an exercise in rupture: slurred words,
+            melted language over deliberately broken structures,
+            an emulsion of off-key verses with no refrain.
+
+            Incantesimi floats half-asleep in the blurred regions of a dreaming unconscious:
+            from its amniotic suspension, details surface —
+            faint outlines, snapshots soaked in soft melancholy.
+
+            Eroinomadi is a diary written at the edges of hope:
+            more musical in the classical sense, yet the most disjointed, dissolved, anesthetic:
+            these are dreams transcribed too late, a navigation in search of what we manage to express —
+            without maps, guided only by a sextant pointed straight at
+            the most vulnerable and wordless core of our sensitive experience.
+        </div>
+        <div class="bio-credits">
+            <p>Robert Bishop / Lilli composes and records using bare-bones tools and minimal tech. He moves along the
+            borders of the song form — somewhere between lo-fi, hallucinatory trap, sound poetry, and linguistic
+            derailments. His writing doesn't seek completion, but residue: like samples of dreams captured too late,
+            his notes prefer the crack to the polished surface. Together with various characters, Bishop builds an
+            intimate, faulty archive — different states of voice, memory, and noise.
+            Vulnerable music, not made to please, but to remain.</p>
+            <p>CARRO is a singer/songwriter who deconstructs languages and registers, blending them together with
+            eclectic references to craft an original yet surreal sound.</p>
+        </div>
+        <div class="album-credits">
+            <div class="credit-item"><span class="credit-label">Release Date:</span><span>May 30, 2025</span></div>
+            <div class="credit-item"><span class="credit-label">Produced by:</span><span>Robert Bishop</span></div>
+            <div class="credit-item"><span class="credit-label">Lyrics:</span><span>lillilillililli, Carro</span></div>
+            <div class="credit-item"><span class="credit-label">Graphic Design by:</span><span>Silvia Basano</span></div>
+            <div class="credit-item"><span class="credit-label">Mixing by:</span><span>Robert Bishop, Deje (eroinomadi)</span></div>
+            <div class="credit-item"><span class="credit-label">Mastering by:</span><span>O k h o</span></div>
+        </div>
+    </div>
+
+    <div class="overlay" id="imageOverlay" onclick="hideImage()">
+        <img id="overlayImage" src="" alt="Ingrandimento">
+    </div>
+
+    <div class="bottom-player">
+        <div class="custom-player">
+            <div class="controls">
+                <div class="control-container"><div class="control-button" onclick="previousSong('bottom')"><i class="fas fa-step-backward"></i></div></div>
+                <div class="control-container"><div class="control-button" onclick="togglePlay('bottom')"><i class="fas fa-play" id="bottom-play-pause"></i></div></div>
+                <div class="control-container"><div class="control-button" onclick="nextSong('bottom')"><i class="fas fa-step-forward"></i></div></div>
+            </div>
+            <div class="track-info">
+                <div class="song-info">
+                    <div class="title-row">
+                        <span class="song-title" id="bottom-song-title">Select a song</span>
+                        <span class="artist-name">Robert Bishop, lillilillililli, Carro</span>
+                    </div>
+                    <div class="time-row">
+                        <span id="bottom-current-time">0:00</span><span>/</span><span id="bottom-duration">0:00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="bottom-progress-bar" onclick="seek(event, 'bottom')">
+                    <div class="progress" id="bottom-progress"></div>
+                </div>
+            </div>
+            <div class="volume-container">
+                <i class="fas fa-volume-up" onclick="toggleMute('bottom')"></i>
+                <input type="range" id="bottom-volume" min="0" max="1" step="0.1" value="1" oninput="setVolume('bottom', this.value)">
+            </div>
+        </div>
+    </div>
+    <audio id="bottomAudio" onended="songEnded('bottom')" ontimeupdate="updateProgress('bottom')"></audio>
+
+    <script>
+        const albumPlaylist = [
+            { src: 'ALBUM/LILLI/1_FIABEDELFIUME_/1 MUOVERMI_MASTER.wav', title: 'Muovermi' },
+            { src: 'ALBUM/LILLI/1_FIABEDELFIUME_/2 ACCESSORI v2_MASTER.wav', title: 'Accessori' },
+            { src: 'ALBUM/LILLI/1_FIABEDELFIUME_/3 PASTO NEGLI  OCCHI_MASTER.wav', title: 'Pasto negli occhi' },
+            { src: 'ALBUM/LILLI/1_FIABEDELFIUME_/4 TEMPO_MASTER.wav', title: 'Tempo' },
+            { src: 'ALBUM/LILLI/2_LIQUIDALINGUA_/1. PRINCIPINO.wav', title: 'Principino' },
+            { src: 'ALBUM/LILLI/2_LIQUIDALINGUA_/2. LONTANOVICINO.wav', title: 'Lontanovicino' },
+            { src: 'ALBUM/LILLI/2_LIQUIDALINGUA_/3. ALDILA.wav', title: 'Aldilà' },
+            { src: 'ALBUM/LILLI/2_LIQUIDALINGUA_/4. CHESTERFIELD.wav', title: 'Chesterfield' },
+            { src: 'ALBUM/LILLI/2_LIQUIDALINGUA_/5. CIVIC.wav', title: 'Civic' },
+            { src: 'ALBUM/LILLI/2_LIQUIDALINGUA_/6. LOVECRAFT.wav', title: 'Lovecraft' },
+            { src: 'ALBUM/LILLI/3_INCANTESIMI/1 PABLO.wav', title: 'Pablo' },
+            { src: 'ALBUM/LILLI/3_INCANTESIMI/2 TU SPERO.wav', title: 'Tu spero' },
+            { src: 'ALBUM/LILLI/3_INCANTESIMI/3 INCANTESIMI.wav', title: 'Incantesimi' },
+            { src: 'ALBUM/LILLI/3_INCANTESIMI/4 CERCHI CON LE MACCHINE.wav', title: 'Cerchi con le macchine' },
+            { src: 'ALBUM/LILLI/3_INCANTESIMI/5 TOSSE.wav', title: 'Tosse' },
+            { src: 'ALBUM/LILLI/3_INCANTESIMI/6 DIMMI TUTTO.wav', title: 'Dimmi tutto' },
+            { src: 'ALBUM/LILLI/3_INCANTESIMI/7 MELODIA.wav', title: 'Melodia' },
+            { src: 'ALBUM/LILLI/4_EROINOMADI_/CANTAUTORE_28feb_MASTER.wav', title: 'Cantautore' },
+            { src: 'ALBUM/LILLI/4_EROINOMADI_/CASIOSUEG_28feb_MASTER.wav', title: 'Casiosueg' },
+            { src: 'ALBUM/LILLI/4_EROINOMADI_/PASSIALSOLE_28feb_MASTER.wav', title: 'Passi al sole' },
+            { src: 'ALBUM/LILLI/4_EROINOMADI_/PERCHé_29feb_MASTER.wav', title: 'Perchè' },
+            { src: 'ALBUM/LILLI/4_EROINOMADI_/PROIBIZIONISMO_28feb_MASTER.wav', title: 'Proibizionismo' },
+            { src: 'ALBUM/LILLI/4_EROINOMADI_/STAREBENE_29feb_MASTER.wav', title: 'Star bene' },
+            { src: 'ALBUM/LILLI/4_EROINOMADI_/TOSSICI_4mar_MASTER.wav', title: 'Tossici' }
+        ];
+    </script>
+    <script src="js/player.js"></script>
+    <script>
+        let slideIndex = 1;
+
+        function currentSlide(n) { showSlides(slideIndex = n); }
+
+        function showSlides(n) {
+            const slides = document.getElementsByClassName("mySlides");
+            const dots = document.getElementsByClassName("dot");
+            if (n > slides.length) slideIndex = 1;
+            if (n < 1) slideIndex = slides.length;
+            for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+            for (let i = 0; i < dots.length; i++) dots[i].className = dots[i].className.replace(" active", "");
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+
+        function handleSlideClick(e, img) {
+            const rect = img.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            if (clickX > rect.width / 2) showSlides(++slideIndex);
+            else showSlides(--slideIndex);
+        }
+
+        const cursor = document.getElementById('custom-cursor');
+        const arrowRight = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="6,3 20,12 6,21" fill="#ffffff" opacity="1"/></svg>`;
+        const arrowLeft = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="18,3 4,12 18,21" fill="#ffffff" opacity="1"/></svg>`;
+
+        document.querySelectorAll('.mySlides img').forEach(img => {
+            img.style.cursor = 'none';
+            img.addEventListener('mousemove', (e) => {
+                const rect = img.getBoundingClientRect();
+                cursor.style.display = 'block';
+                cursor.style.left = (e.clientX - 16) + 'px';
+                cursor.style.top = (e.clientY - 16) + 'px';
+                cursor.innerHTML = e.clientX - rect.left > rect.width / 2 ? arrowRight : arrowLeft;
+            });
+            img.addEventListener('mouseleave', () => { cursor.style.display = 'none'; });
+        });
+
+        let touchStartX = 0;
+        document.querySelector('.slideshow-container').addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+        document.querySelector('.slideshow-container').addEventListener('touchend', (e) => {
+            const diff = touchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 40) {
+                if (diff > 0) showSlides(++slideIndex);
+                else showSlides(--slideIndex);
+            }
+        }, { passive: true });
+
+        function toggleMenu() {
+            document.getElementById('hamburger').classList.toggle('active');
+            document.getElementById('navbar-right').classList.toggle('active');
+        }
+        const navbar = document.querySelector('.navbar-main');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('hidden', window.scrollY > 10);
+        });
+    </script>
+
+</body>
+</html>
