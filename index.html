@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" sizes="32x32" href="artworw-purp.webp">
     <title>Pick Up The Cake</title>
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </noscript>
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
     <nav class="navbar-main">
@@ -21,18 +26,17 @@
         <div class="navbar-right" id="navbar-right">
             <a href="releases.html" class="nav-item">RELEASES</a>
             <a href="residency.html" class="nav-item">RESIDENCY</a>
-            <a href="about2.html#about" class="nav-item">ABOUT</a>
-            <a href="about2.html#contact" class="nav-item">CONTACT</a>
-            <a href="about2.html#support" class="nav-item">SUPPORT US</a>
+            <a href="about.html#about" class="nav-item">ABOUT</a>
+            <a href="about.html#contact" class="nav-item">CONTACT</a>
+            <a href="about.html#support" class="nav-item">SUPPORT US</a>
         </div>
     </nav>
 
     <!-- Desktop -->
     <div class="images-container">
-       
         <div class="image-box2">
             <a href="release02.html">
-                <img src="ARWORK/Espedienti.webp" width="300" height="300" alt="Espedienti">
+                <img src="ARWORK/Espedienti.webp" width="300" height="300" fetchpriority="high" alt="Espedienti">
             </a>
         </div>
         <div class="image-box01">
@@ -45,15 +49,7 @@
     <!-- Mobile snap scroll -->
     <div class="mobile-snap-container">
         <div class="snap-slide">
-            <a href="album3.html">
-                <img src="ARWORK/kabritoArt.webp" alt="L'uomo corteccia">
-            </a>
-            <div class="scroll-hint">
-                <i class="fas fa-chevron-down"></i>
-            </div>
-        </div>
-        <div class="snap-slide">
-            <a href="album2.html">
+            <a href="release02.html">
                 <img src="ARWORK/Espedienti.webp" alt="Espedienti">
             </a>
             <div class="scroll-hint">
@@ -61,7 +57,7 @@
             </div>
         </div>
         <div class="snap-slide">
-            <a href="album.html">
+            <a href="release01.html">
                 <img src="ARWORK/sofacoveer2.webp" alt="Live In Italy">
             </a>
         </div>
@@ -106,7 +102,8 @@
             </div>
             <div class="volume-container">
                 <i class="fas fa-volume-up" onclick="toggleMute('bottom')"></i>
-                <input type="range" id="bottom-volume" min="0" max="1" step="0.1" value="1" oninput="setVolume('bottom', this.value)">
+                <input type="range" id="bottom-volume" min="0" max="1" step="0.1" value="1"
+                    oninput="setVolume('bottom', this.value)">
             </div>
         </div>
     </div>
@@ -122,4 +119,5 @@
     </script>
 
 </body>
+
 </html>
