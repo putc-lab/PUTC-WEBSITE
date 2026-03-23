@@ -211,6 +211,15 @@ body {
 
 .bottom-player .track-info {
     position: absolute;
+    font-family: ABCFavoritMono,
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    Liberation Mono,
+    Courier New,
+    monospace;
     left: 200px;
     top: 50%;
     transform: translateY(-50%);
