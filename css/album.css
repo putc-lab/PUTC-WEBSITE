@@ -154,7 +154,7 @@ body {
     cursor: pointer;
 }
 
-.track-item:hover { background-color: #e4b0f9; }
+.track-item:hover { background-color: #000000; }
 
 .track-number {
     color: #000;
