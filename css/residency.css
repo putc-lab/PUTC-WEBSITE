@@ -218,11 +218,11 @@ body {
 .mixcloud-close {
     position: absolute;
     right: 16px;
-    top: 8px;
+    top: 4px;
     background: none;
     border: none;
-    color: #666;
-    font-size: 0.85rem;
+    color: #9933ff;
+    font-size: 1rem;
     cursor: pointer;
     z-index: 10;
     transition: color 0.2s;
@@ -235,6 +235,7 @@ body {
 #soundcloud-player.active { bottom: 0; }
 #soundcloud-player .mixcloud-player-inner,
 #soundcloud-player iframe { height: 120px; }
+#soundcloud-player .mixcloud-close {top: 30px}
 
 /* ══════════════════════════════════════════════
    MEDIA QUERIES
