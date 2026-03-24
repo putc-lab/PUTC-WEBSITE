@@ -1,7 +1,7 @@
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: #000; }
-::-webkit-scrollbar-thumb { background: #b400fb; border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: #9933ff; border-radius: 2px; }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -18,7 +18,7 @@ body {
     height: 45px;
     display: flex;
     background: rgba(0, 0, 0, 0.95);
-    border-bottom: 1px solid #9c25c3;
+    border-bottom: 1px solid #9933ff;
     z-index: 1000;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
@@ -28,14 +28,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-right: 1px solid #9c25c3;
+    border-right: 1px solid #9933ff;
 }
 
 .navbar-left img { height: 55px; width: auto; }
 
 .navbar-right {
     flex: 0 0 50%;
-    background-color: #9c25c3;
+    background-color: #9933ff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -164,7 +164,7 @@ body {
 /* ── Play button ── */
 .entry-play-btn {
     background: none;
-    border: 1px solid #b400fb;
+    border: 1px solid #9933ff;
     color: #fff;
     font-family: ABCDiatype-Medium, Arial, sans-serif;
     letter-spacing: 2px;
@@ -177,7 +177,7 @@ body {
     gap: 8px;
 }
 
-.entry-play-btn:hover { background: #b400fb; }
+.entry-play-btn:hover { background: #9933ff; }
 
 /* ── Mixcloud player fisso ── */
 .mixcloud-player {
@@ -186,7 +186,7 @@ body {
     left: 0; right: 0;
     height: 70px;
     background: #111;
-    border-top: 1px solid #b400fb;
+    border-top: 1px solid #9933ff;
     z-index: 2000;
     transition: bottom 0.3s ease;
 }

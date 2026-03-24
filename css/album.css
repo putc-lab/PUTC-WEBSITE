@@ -1,7 +1,7 @@
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: #1a1a1a; }
-::-webkit-scrollbar-thumb { background: #be3bff; border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: #9933ff; border-radius: 2px; }
 
 body {
     margin: 0;
@@ -16,8 +16,8 @@ body {
     max-width: 1200px;
     margin: 70px auto 0 auto;
     display: flex;
-    border-top: 1px solid #b400fb;
-    border-bottom: 1px solid #b400fb;
+    border-top: 1px solid #9933ff;
+    border-bottom: 1px solid #9933ff;
 }
 
 /* ── Custom cursor slideshow ── */
@@ -71,12 +71,12 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.dot.active, .dot:hover { background-color: #b400fb; }
+.dot.active, .dot:hover { background-color: #9933ff; }
 
 /* ── Artwork ── */
 .album-artwork {
     flex: 0 0 50%;
-    border-right: 1px solid #b400fb;
+    border-right: 1px solid #9933ff;
     padding: 40px;
     box-sizing: border-box;
     display: flex;
@@ -196,7 +196,7 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    color: #b400fb;
+    color: #9933ff;
     font-size: 1.3rem;
     padding: 6px 14px;
     transition: opacity 0.2s, transform 0.15s;
@@ -212,7 +212,7 @@ body {
     margin: 20px auto 0 auto;
     width: fit-content;
     padding: 10px 24px;
-    border: 1px solid #b400fb;
+    border: 1px solid #9933ff;
     color: #000;
     text-decoration: none;
     font-family: abcdiatype-medium, sans-serif;
@@ -221,7 +221,7 @@ body {
     transition: background 0.2s, color 0.2s;
 }
 
-.buy-btn:hover { background: #b400fb; color: #fff; }
+.buy-btn:hover { background: #9933ff; color: #fff; }
 
 /* ── Album bottom info ── */
 .album-bottom-info {
@@ -229,7 +229,7 @@ body {
     margin: 0 auto 100px auto;
     padding: 40px 20px;
     box-sizing: border-box;
-    border-bottom: 1px solid #b400fb;
+    border-bottom: 1px solid #9933ff;
 }
 
 .album-description {
@@ -241,7 +241,7 @@ body {
     font-family: abcdiatype-medium, sans-serif;
     font-style: italic;
     text-align: right;
-    border: 1px solid #b400fb;
+    border: 1px solid #9933ff;
     padding: 20px;
 }
 
@@ -292,7 +292,7 @@ body {
 
     .album-artwork {
         flex: none; width: 100%;
-        border-right: none; border-bottom: 1px solid #b400fb;
+        border-right: none; border-bottom: 1px solid #9933ff;
         padding: 30px 20px;
     }
 
@@ -328,7 +328,7 @@ body {
 
 @media screen and (max-width: 1024px) and (orientation: landscape) {
     .album-content { flex-direction: row; margin: 55px 0 0; }
-    .album-artwork { flex: 0 0 40%; border-right: 1px solid #b400fb; border-bottom: none; }
+    .album-artwork { flex: 0 0 40%; border-right: 1px solid #9933ff; border-bottom: none; }
     .album-info { flex: 0 0 60%; padding: 20px; }
     .bottom-player .volume-container { display: none; }
     .bottom-player .artist-name { display: none; }
