@@ -13,6 +13,42 @@
     </noscript>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/album.css">
+    <style>
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            height: 100%;
+            will-change: transform;
+        }
+
+        .carousel-track img {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            user-select: none;
+            -webkit-user-drag: none;
+            pointer-events: none;
+        }
+
+        .dot-container {
+            margin-top: 15px;
+        }
+
+        @media (hover: none) {
+            #custom-cursor {
+                display: none !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -37,23 +73,20 @@
     <div class="album-content">
         <div class="album-artwork">
             <div class="slideshow-container">
-                <div class="mySlides fade" style="display: block;">
-                    <img src="ARWORK/HQ/Espedienti.webp" alt="Espedienti Album">
+                <div class="carousel-wrapper" id="carousel-wrapper">
+                    <div class="carousel-track" id="carousel-track">
+                        <!-- Le immagini vengono clonate via JS per il loop infinito -->
+                        <img src="ARWORK/HQ/Espedienti.webp" alt="Espedienti Album">
+                        <img src="ARWORK/espedientitape/1.webp" alt="Espedienti tape 1">
+                        <img src="ARWORK/espedientitape/2.webp" alt="Espedienti tape 2">
+                        <img src="ARWORK/espedientitape/3.webp" alt="Espedienti tape 3">
+                    </div>
                 </div>
-                <div class="mySlides fade">
-                    <img src="ARWORK/espedientitape/1.webp" alt="Espedienti tape 1">
-                </div>
-                <div class="mySlides fade">
-                    <img src="ARWORK/espedientitape/2.webp" alt="Espedienti tape 2">
-                </div>
-                <div class="mySlides fade">
-                    <img src="ARWORK/espedientitape/3.webp" alt="Espedienti tape 3">
-                </div>
-                <div class="dot-container">
-                    <span class="dot active" onclick="currentSlide(1)"></span>
-                    <span class="dot" onclick="currentSlide(2)"></span>
-                    <span class="dot" onclick="currentSlide(3)"></span>
-                    <span class="dot" onclick="currentSlide(4)"></span>
+                <div class="dot-container" id="dot-container">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
                 </div>
             </div>
             <div class="artwork-credit">Artwork by <strong>Silvia Basano</strong></div>
@@ -112,13 +145,11 @@
             <div class="credit-item"><span class="credit-label">Release Date:</span><span>May 30, 2025</span></div>
             <div class="credit-item"><span class="credit-label">Produced by:</span><span>Robert Bishop</span></div>
             <div class="credit-item"><span class="credit-label">Lyrics:</span><span>lillilillililli, Carro</span></div>
+            <div class="credit-item"><span class="credit-label">Graphic Design by:</span><span>Silvia Basano</span>
+            </div>
             <div class="credit-item"><span class="credit-label">Mixing by:</span><span>Robert Bishop, Deje
                     (eroinomadi)</span></div>
-                    <div class="credit-item"><span class="credit-label">Mastering by:</span><span>O k h o</span></div>
-                    <div class="credit-item"><span class="credit-label">Graphic Design by:</span><span>Silvia Basano</span></div>
-                    <div class="credit-item"><span class="credit-label">PH by:</span><span>nonedai</span></div>
-            </div>
-   
+            <div class="credit-item"><span class="credit-label">Mastering by:</span><span>O k h o</span></div>
         </div>
     </div>
 
@@ -196,83 +227,136 @@
     </script>
     <script src="js/player.js"></script>
     <script>
-        let slideIndex = 1;
+        // ── Infinite loop carousel ──
+        const track = document.getElementById('carousel-track');
+        const wrapper = document.getElementById('carousel-wrapper');
+        const dotsEl = document.querySelectorAll('.dot');
+        const imgs = Array.from(track.querySelectorAll('img'));
+        const total = imgs.length;
+        let current = 0; // indice reale (0-based)
+        let trackIndex = 1; // posizione nel track clonato (1 = prima reale)
+        let isAnimating = false;
 
-        function currentSlide(n) { showSlides(slideIndex = n); }
+        // Clona prima e ultima immagine per loop infinito
+        const firstClone = imgs[0].cloneNode(true);
+        const lastClone = imgs[total - 1].cloneNode(true);
+        track.appendChild(firstClone);
+        track.insertBefore(lastClone, imgs[0]);
 
-        function showSlides(n) {
-            const slides = document.getElementsByClassName("mySlides");
-            const dots = document.getElementsByClassName("dot");
-            if (n > slides.length) slideIndex = 1;
-            if (n < 1) slideIndex = slides.length;
-            for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
-            for (let i = 0; i < dots.length; i++) dots[i].className = dots[i].className.replace(" active", "");
-            slides[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " active";
+        // Posiziona senza animazione all'inizio (sulla prima reale)
+        track.style.transition = 'none';
+        track.style.transform = `translateX(-${trackIndex * 100}%)`;
+
+        function updateDots() {
+            dotsEl.forEach((d, i) => d.classList.toggle('active', i === current));
         }
 
-        // ── Cursore custom — legato al container, non all'immagine ──
-        const cursor = document.getElementById('custom-cursor');
-        const arrowRight = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="6,3 20,12 6,21" fill="#b400fb" opacity="1"/></svg>`;
-        const arrowLeft = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="18,3 4,12 18,21" fill="#b400fb" opacity="1"/></svg>`;
+        function slideTo(index, animate = true) {
+            if (isAnimating) return;
+            isAnimating = true;
+            trackIndex = index;
+            track.style.transition = animate
+                ? 'transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                : 'none';
+            track.style.transform = `translateX(-${trackIndex * 100}%)`;
+        }
 
-        const slideshow = document.querySelector('.slideshow-container');
-
-        // Nascondi cursore di default su tutte le immagini
-        document.querySelectorAll('.mySlides img').forEach(img => {
-            img.style.cursor = 'none';
+        // Dopo la transizione, controlla se siamo sui cloni e salta
+        track.addEventListener('transitionend', () => {
+            isAnimating = false;
+            // Se siamo sul clone dell'ultima (indice 0) → salta alla vera ultima
+            if (trackIndex === 0) {
+                track.style.transition = 'none';
+                trackIndex = total;
+                track.style.transform = `translateX(-${trackIndex * 100}%)`;
+            }
+            // Se siamo sul clone della prima (indice total+1) → salta alla vera prima
+            if (trackIndex === total + 1) {
+                track.style.transition = 'none';
+                trackIndex = 1;
+                track.style.transform = `translateX(-${trackIndex * 100}%)`;
+            }
+            // Aggiorna current e dots
+            current = (trackIndex - 1 + total) % total;
+            updateDots();
         });
 
-        // Mousemove sul container — non sull'immagine
-        slideshow.addEventListener('mousemove', (e) => {
-            const rect = slideshow.getBoundingClientRect();
+        function nextSlide() {
+            slideTo(trackIndex + 1);
+        }
+
+        function prevSlide() {
+            slideTo(trackIndex - 1);
+        }
+
+        // ── Desktop: cursore custom ──
+        const cursor = document.getElementById('custom-cursor');
+        const arrowRight = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="6,3 20,12 6,21" fill="#9933ff"/></svg>`;
+        const arrowLeft = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="18,3 4,12 18,21" fill="#9933ff"/></svg>`;
+
+        wrapper.style.cursor = 'none';
+
+        wrapper.addEventListener('mousemove', (e) => {
+            const rect = wrapper.getBoundingClientRect();
             cursor.style.display = 'block';
             cursor.style.left = (e.clientX - 16) + 'px';
             cursor.style.top = (e.clientY - 16) + 'px';
             cursor.innerHTML = e.clientX - rect.left > rect.width / 2 ? arrowRight : arrowLeft;
         });
 
-        slideshow.addEventListener('mouseleave', () => {
+        wrapper.addEventListener('mouseleave', () => {
             cursor.style.display = 'none';
         });
 
-        // Click sul container
-        slideshow.addEventListener('click', (e) => {
-            // Ignora click sui pallini
-            if (e.target.classList.contains('dot')) return;
-            const rect = slideshow.getBoundingClientRect();
-            if (e.clientX - rect.left > rect.width / 2) showSlides(++slideIndex);
-            else showSlides(--slideIndex);
+        wrapper.addEventListener('click', (e) => {
+            const rect = wrapper.getBoundingClientRect();
+            if (e.clientX - rect.left > rect.width / 2) nextSlide();
+            else prevSlide();
         });
 
-        // ── Swipe mobile — blocca scroll solo se orizzontale ──
+        // ── Mobile: swipe live ──
         let touchStartX = 0;
         let touchStartY = 0;
-        let isSwiping = false;
+        let dragging = false;
+        let dragDelta = 0;
 
-        slideshow.addEventListener('touchstart', (e) => {
+        wrapper.addEventListener('touchstart', (e) => {
+            if (isAnimating) return;
             touchStartX = e.touches[0].clientX;
             touchStartY = e.touches[0].clientY;
-            isSwiping = false;
+            dragging = false;
+            dragDelta = 0;
+            track.style.transition = 'none';
         }, { passive: true });
 
-        slideshow.addEventListener('touchmove', (e) => {
-            const dx = Math.abs(e.touches[0].clientX - touchStartX);
-            const dy = Math.abs(e.touches[0].clientY - touchStartY);
-            if (dx > dy && dx > 10) {
-                isSwiping = true;
+        wrapper.addEventListener('touchmove', (e) => {
+            const dx = e.touches[0].clientX - touchStartX;
+            const dy = e.touches[0].clientY - touchStartY;
+            if (!dragging && Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 8) {
+                dragging = true;
+            }
+            if (dragging) {
                 e.preventDefault();
+                dragDelta = dx;
+                const baseOffset = trackIndex * 100;
+                const dragPercent = (dx / wrapper.offsetWidth) * 100;
+                track.style.transform = `translateX(calc(-${baseOffset}% + ${dragPercent}%))`;
             }
         }, { passive: false });
 
-        slideshow.addEventListener('touchend', (e) => {
-            const diff = touchStartX - e.changedTouches[0].clientX;
-            if (isSwiping && Math.abs(diff) > 40) {
-                if (diff > 0) showSlides(++slideIndex);
-                else showSlides(--slideIndex);
+        wrapper.addEventListener('touchend', () => {
+            track.style.transition = 'transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            if (dragging && Math.abs(dragDelta) > 50) {
+                if (dragDelta < 0) nextSlide();
+                else prevSlide();
+            } else {
+                slideTo(trackIndex);
             }
+            dragging = false;
+            dragDelta = 0;
         }, { passive: true });
 
+        // ── Navbar ──
         function toggleMenu() {
             document.getElementById('hamburger').classList.toggle('active');
             document.getElementById('navbar-right').classList.toggle('active');
