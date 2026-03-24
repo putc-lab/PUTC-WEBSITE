@@ -265,7 +265,7 @@ body {
     .navbar-right {
         display: none;
         position: fixed;
-        top: 50px; left: 0; right: 0; bottom: 0;
+        top: 66px; left: 0; right: 0; bottom: 0;
         background: #000;
         flex-direction: column;
         justify-content: flex-start;
