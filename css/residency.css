@@ -235,7 +235,8 @@ body {
 #soundcloud-player.active { bottom: 0; }
 #soundcloud-player .mixcloud-player-inner,
 #soundcloud-player iframe { height: 120px; }
-#soundcloud-player .mixcloud-close {top: 30px}
+#soundcloud-player .mixcloud-close {top: 27px; right: 45px; font-size: 1.3rem; color: #000;}
+#soundcloud-player .mixcloud-close:hover { color: #c6c6c6;}
 
 /* ══════════════════════════════════════════════
    MEDIA QUERIES
