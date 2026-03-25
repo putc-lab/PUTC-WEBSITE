@@ -58,7 +58,7 @@ const players = {
             { src: 'ALBUM/KABIRO/05 - Kabiro - 6. organo-modale.mp3', title: 'Organo modale', artist: 'Kabiro' },
             { src: 'ALBUM/KABIRO/06 - Kabiro - o_mio_mia_gran.mp3', title: 'O mio mia gran', artist: 'Kabiro' },
             { src: 'ALBUM/KABIRO/07 - Kabiro - 1.brutto.mp3', title: 'Brutto', artist: 'Kabiro' },
-            { src: 'ALBUM/KABIRO/08 - Kabiro - 8. Live.mp3', title: 'Live at Afekt festival', artist: 'Kabiro, Roya Naini' }
+            { src: 'ALBUM/KABIRO/08 - Kabiro - 8. Live.mp3', title: 'Live at Afekt festival', artist: 'Kabiro, Roya' }
         
         ]),
         isPlaying: false,
