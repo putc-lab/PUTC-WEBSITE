@@ -51,6 +51,14 @@ const players = {
             { src: 'ALBUM/LILLI/4_EROINOMADI_/PROIBIZIONISMO_28feb_MASTER.mp3', title: 'Proibizionismo', artist: 'Robert Bishop, lillilillililli, Carro' },
             { src: 'ALBUM/LILLI/4_EROINOMADI_/STAREBENE_29feb_MASTER.mp3', title: 'Star bene', artist: 'Robert Bishop, lillilillililli, Carro' },
             { src: 'ALBUM/LILLI/4_EROINOMADI_/TOSSICI_4mar_MASTER.mp3', title: 'Tossici', artist: 'Robert Bishop, lillilillililli, Carro' },
+            { src: 'ALBUM/KABIRO/03 - Kabiro - 4. sidrax divinorum-001.mp3', title: 'Sidrax', artist: 'Kabiro' },
+            { src: 'ALBUM/KABIRO/01 - Kabiro - 2.armonici_delay.mp3', title: 'Armonici delay', artist: 'Kabiro' },
+            { src: 'ALBUM/KABIRO/02 - Kabiro - 3. esporre-imporre-pocoriverbero.mp3', title: 'Esporre/Imporre', artist: 'Kabiro' },
+            { src: 'ALBUM/KABIRO/04 - Kabiro - 5. chef bananas-001.mp3', title: 'Chef bananas', artist: 'Kabiro' },
+            { src: 'ALBUM/KABIRO/05 - Kabiro - 6. organo-modale.mp3', title: 'Organo modale', artist: 'Kabiro' },
+            { src: 'ALBUM/KABIRO/06 - Kabiro - o_mio_mia_gran.mp3', title: 'O mio mia gran', artist: 'Kabiro' },
+            { src: 'ALBUM/KABIRO/07 - Kabiro - 1.brutto.mp3', title: 'Brutto', artist: 'Kabiro' },
+            { src: 'ALBUM/KABIRO/08 - Kabiro - 8. Live.mp3', title: 'Live at Afekt festival', artist: 'Kabiro, Roya Naini' }
         
         ]),
         isPlaying: false,
