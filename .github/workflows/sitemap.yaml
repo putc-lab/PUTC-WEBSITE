@@ -3,7 +3,7 @@ name: Generate XML Sitemap
 on:
   push:
     branches:
-      - main # Cambia in 'master' se la tua branch principale si chiama così
+      - main
 
 jobs:
   sitemap_job:
@@ -21,7 +21,7 @@ jobs:
           base-url-path: https://pickupthecake.xyz
           path-to-root: .
           additional-extensions: html
-          drop-extension: false # Mantieni .html come abbiamo deciso
+          drop-extension: false
 
       - name: Commit and push sitemap
         run: |
