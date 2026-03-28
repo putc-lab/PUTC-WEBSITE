@@ -1,38 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://pickupthecake.xyz/</loc>
-        <changefreq>monthly</changefreq>
-        <priority>1.0</priority>
-    </url>
-    <url>
-        <loc>https://pickupthecake.xyz/releases.html</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://pickupthecake.xyz/001-live-in-italy.html</loc>
-        <changefreq>yearly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://pickupthecake.xyz/002-espedienti.html</loc>
-        <changefreq>yearly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://pickupthecake.xyz/003-luomo-corteccia.html</loc>
-        <changefreq>yearly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://pickupthecake.xyz/residency.html</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://pickupthecake.xyz/about.html</loc>
-        <changefreq>yearly</changefreq>
-        <priority>0.7</priority>
-    </url>
+<url>
+<loc>https://pickupthecake.xyz/</loc>
+<lastmod>2026-03-28T19:22:47+01:00</lastmod>
+</url>
+<url>
+<loc>https://pickupthecake.xyz/001-live-in-italy.html</loc>
+<lastmod>2026-03-28T19:22:47+01:00</lastmod>
+</url>
+<url>
+<loc>https://pickupthecake.xyz/002-espedienti.html</loc>
+<lastmod>2026-03-28T19:22:47+01:00</lastmod>
+</url>
+<url>
+<loc>https://pickupthecake.xyz/003-luomo-corteccia.html</loc>
+<lastmod>2026-03-28T19:22:47+01:00</lastmod>
+</url>
+<url>
+<loc>https://pickupthecake.xyz/about.html</loc>
+<lastmod>2026-03-28T19:22:47+01:00</lastmod>
+</url>
+<url>
+<loc>https://pickupthecake.xyz/release01.html</loc>
+<lastmod>2026-03-28T19:55:01+01:00</lastmod>
+</url>
+<url>
+<loc>https://pickupthecake.xyz/release02.html</loc>
+<lastmod>2026-03-28T19:55:01+01:00</lastmod>
+</url>
+<url>
+<loc>https://pickupthecake.xyz/release03.html</loc>
+<lastmod>2026-03-28T19:55:01+01:00</lastmod>
+</url>
+<url>
+<loc>https://pickupthecake.xyz/releases.html</loc>
+<lastmod>2026-03-28T19:22:47+01:00</lastmod>
+</url>
+<url>
+<loc>https://pickupthecake.xyz/residency.html</loc>
+<lastmod>2026-03-28T19:22:47+01:00</lastmod>
+</url>
 </urlset>
