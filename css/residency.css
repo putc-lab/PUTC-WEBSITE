@@ -31,7 +31,7 @@ body {
     border-right: 1px solid #9933ff;
 }
 
-.navbar-left img { height: 55px; width: auto; }
+.navbar-left img { height: 45px; width: auto; }
 
 .navbar-right {
     flex: 0 0 50%;
