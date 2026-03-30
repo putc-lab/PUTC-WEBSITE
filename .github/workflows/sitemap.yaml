@@ -22,6 +22,7 @@ jobs:
           path-to-root: .
           additional-extensions: html
           drop-html-extension: false
+          exclude-files: "release01.html release02.html release03.html"
 
       - name: Commit and push sitemap
         run: |
